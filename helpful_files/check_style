@@ -1,0 +1,1 @@
+python ~/pa2sp15/helpful_files/cpplint.py --filter=-runtime/references,-legal/copyright,-readability/streams,-runtime/explicit,-build/header_guard,-build/include,-runtime/int "$@"

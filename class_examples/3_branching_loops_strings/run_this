@@ -1,0 +1,56 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Basic Branching'
+ONE_FILE='basic_branching'
+TWO='Run Switch'
+TWO_FILE='switch'
+THREE='Run Loops'
+THREE_FILE='loops'
+FOUR='Run Strings'
+FOUR_FILE='strings'
+FIVE='Run Character Functions'
+FIVE_FILE='character_functions'
+options=("Compile All" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    printf "\033c"
+    case $opt in
+        "Compile All")
+            make
+            break
+            ;;
+        "$ONE")
+            make $ONE_FILE
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+            make $TWO_FILE
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "$THREE")
+            make $THREE_FILE
+            ./${THREE_FILE}.run
+            break
+            ;;
+		"$FOUR")
+            make $FOUR_FILE
+            ./${FOUR_FILE}.run
+            break
+            ;;
+		"$FIVE")
+            make $FIVE_FILE
+            ./${FIVE_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+            make clean
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
