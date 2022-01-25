@@ -29,7 +29,7 @@ int main() {
   //     my_character. Initialize both of them to the value 'z'
   char programmed_before, my_character = 'z';
   // (3) Display a welcome message to standard output
-  cout << "Welcome!\n" ;
+  cout << "Welcome!\n";
   // (4) Prompt the user for their first name
   cout << "What is your first name?\n";
   // (5) Read the name from standard input and store in the variable user_name
@@ -43,7 +43,6 @@ int main() {
   // (8): Read in the answer from standard input and store in the variable
   //      programmed_before
   cin >> programmed_before;
-  
   // For testing (DO NOT ALTER)
   UnitTest(user_name, programmed_before, my_character);
 
