@@ -1,0 +1,63 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Advanced Input'
+ONE_FILE='advanced_input'
+TWO='Run StringStream'
+TWO_FILE='stringstream'
+THREE='Run Functions'
+THREE_FILE='functions'
+FOUR='Run Call By'
+FOUR_FILE='call_by'
+FIVE='Run Overloading Default'
+FIVE_FILE='overloading_default'
+SIX='Run Overloading Concepts'
+SIX_FILE='overloading_concepts'
+options=("Compile All" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE" "$SIX" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    printf "\033c"
+    case $opt in
+        "Compile All")
+            make
+            break
+            ;;
+        "$ONE")
+            make $ONE_FILE
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+            make $TWO_FILE
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "$THREE")
+            make $THREE_FILE
+            ./${THREE_FILE}.run
+            break
+            ;;
+		"$FOUR")
+            make $FOUR_FILE
+            ./${FOUR_FILE}.run
+            break
+            ;;
+		"$FIVE")
+            make $FIVE_FILE
+            ./${FIVE_FILE}.run
+            break
+            ;;
+		"$SIX")
+            make $SIX_FILE
+            ./${SIX_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+            make clean
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done

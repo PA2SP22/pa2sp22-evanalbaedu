@@ -1,0 +1,49 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Arithmetic'
+ONE_FILE='arithmetic'
+TWO='Run Increment, Decrement and Type Cast'
+TWO_FILE='inc_dec_type_cast'
+THREE='Run Escape Sequences and Constants'
+THREE_FILE='escape_constant'
+FOUR='Run Code Style'
+FOUR_FILE='style'
+options=("Compile All" "$ONE" "$TWO" "$THREE" "$FOUR" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    printf "\033c"
+    case $opt in
+        "Compile All")
+            make
+            break
+            ;;
+        "$ONE")
+            make $ONE_FILE
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+            make $TWO_FILE
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "$THREE")
+            make $THREE_FILE
+            ./${THREE_FILE}.run
+            break
+            ;;
+		"$FOUR")
+            make $FOUR_FILE
+            ./${FOUR_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+            make clean
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
