@@ -1,7 +1,7 @@
 /*
  * Name        : lab_1.cpp
- * Author      : FILL IN
- * Description : FILL IN
+ * Author      : Evan Alba
+ * Description : First lab of the Year!
  */
 
 #include <iostream>
