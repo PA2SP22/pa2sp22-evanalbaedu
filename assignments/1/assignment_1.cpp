@@ -1,7 +1,7 @@
 /*
  * Name        : Coding Assignment #1
  * Author      : Evan Alba
- * Description : Caesar Cipher Encryption & Decryption lab which 
+ * Description : Caesar Cipher Encryption & Decryption lab with Data Manipulation functions.
  * Sources     :
  
  https://stackoverflow.com/questions/4743564/c-string-variable-declaration#4743586
