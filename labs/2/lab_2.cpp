@@ -1,6 +1,6 @@
 /*
  * Name        : lab_2.cpp
- * Author      : Evam Alba
+ * Author      : Evan Alba
  * Description : Using Arithmetic to finish the functions MakeChange() and
  *               LaunchHumanCannonball()
  */
