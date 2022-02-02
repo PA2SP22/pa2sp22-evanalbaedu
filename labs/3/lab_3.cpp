@@ -1,6 +1,6 @@
 /*
  * Name        : lab_3.cpp
- * Author      : FILL IN
+ * Author      : Evan Alba
  * Description : Using branching statements, looping statements and string and
  *               character functions complete the functions
  */
@@ -64,7 +64,16 @@ int main() {
  * @return string - The output string specified in the documentation above
  */
 string Goldilocks(string item, int number) {
-  // CODE HERE
+  string status[9] = {"too hot", "too cold", "just right", "too big", "too small", "just right", "too hard", "too soft", "just right"};
+  if ((item == "porridge") && (number == 1, 2, 3)) {
+    return "This porridge is " + status[number-1];
+  } else if ((item == "chair") && (number == 1, 2, 3)) {
+    return "This chair is " + status[number+2];
+  } else if ((item == "bed") && (number == 1, 2, 3)) {
+    return "This bed is " + status[number+5];
+  } else {
+    return "This bed is " + status[8];
+  }
 }
 
 /*
@@ -82,6 +91,10 @@ string Goldilocks(string item, int number) {
 int RockScissorPaper(char player_one, char player_two) {
   // YOU MUST USE A SWITCH IN THIS FUNCTION
   // CODE HERE
+  switch(toupper(player_one)) {
+    case :
+      return
+  }
 }
 
 /*
