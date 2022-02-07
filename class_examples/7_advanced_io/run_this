@@ -1,0 +1,56 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run File I/O'
+ONE_FILE='simple_file_io'
+TWO='Run Advanced File I/O'
+TWO_FILE='advanced_io'
+THREE='Run Streams In Functions'
+THREE_FILE='streams_in_functions'
+FOUR='Run Stream Errors'
+FOUR_FILE='stream_errors'
+FIVE='Run Stream Formatting'
+FIVE_FILE='formatting'
+options=("Compile All" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    printf "\033c"
+    case $opt in
+        "Compile All")
+            make
+            break
+            ;;
+        "$ONE")
+            make $ONE_FILE
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+            make $TWO_FILE
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "$THREE")
+            make $THREE_FILE
+            ./${THREE_FILE}.run
+            break
+            ;;
+		"$FOUR")
+            make $FOUR_FILE
+            ./${FOUR_FILE}.run
+            break
+            ;;
+		"$FIVE")
+            make $FIVE_FILE
+            ./${FIVE_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+            make clean
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done

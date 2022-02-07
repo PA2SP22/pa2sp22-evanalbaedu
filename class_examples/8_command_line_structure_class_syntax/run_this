@@ -1,0 +1,56 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Command Line Arguments'
+ONE_FILE='simple_arguments'
+TWO='Run Command Line Arguments with Error Checking'
+TWO_FILE='error_example'
+THREE='Run Structure Syntax'
+THREE_FILE='structures'
+FOUR='Run Structure Concepts'
+FOUR_FILE='structure_concepts'
+FIVE='Run Class Syntax'
+FIVE_FILE='class'
+options=("Compile All" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    printf "\033c"
+    case $opt in
+        "Compile All")
+            make
+            break
+            ;;
+        "$ONE")
+            make $ONE_FILE
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+            make $TWO_FILE
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "$THREE")
+            make $THREE_FILE
+            ./${THREE_FILE}.run
+            break
+            ;;
+		"$FOUR")
+            make $FOUR_FILE
+            ./${FOUR_FILE}.run
+            break
+            ;;
+		"$FIVE")
+            make $FIVE_FILE
+            ./${FIVE_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+            make clean
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done

@@ -1,0 +1,35 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Scope'
+ONE_FILE='scope'
+TWO='Run Documentation'
+TWO_FILE='documentation'
+options=("Compile All" "$ONE" "$TWO" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    printf "\033c"
+    case $opt in
+        "Compile All")
+            make
+            break
+            ;;
+        "$ONE")
+            make $ONE_FILE
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+            make $TWO_FILE
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+            make clean
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
