@@ -1,6 +1,10 @@
 /*
  * Name        : lab_2.cpp
+<<<<<<< HEAD
  * Author      : Evan Alba
+=======
+ * Author      : FILL IN
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
  * Description : Using Arithmetic to finish the functions MakeChange() and
  *               LaunchHumanCannonball()
  */
@@ -32,7 +36,11 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle);
 
 // Create a Constant named kPI which is initialized to 3.1415927
 // FILL IN
+<<<<<<< HEAD
 const double kPI = 3.1415927;
+=======
+
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 // Program Execution Starts Here
 int main() {
   // To test your code (DO NOT ALTER)
@@ -54,6 +62,7 @@ int main() {
  * @param int pennies - The number of pennies that come out of initial_value,
  *                      after quarters, dimes, and nickels have been taken out
  */
+<<<<<<< HEAD
 void MakeChange(int initial_value, int &quarters,
 int &dimes, int &nickels, int &pennies) {
   quarters = 0;
@@ -75,6 +84,11 @@ int &dimes, int &nickels, int &pennies) {
       initial_value -= (pennies * 1);
     }
   }
+=======
+void MakeChange(int initial_value, int &quarters, int &dimes, int &nickels,
+                int &pennies) {
+  // CODE HERE
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 /*
@@ -92,6 +106,7 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
   // (1) Convert launch_angle from degrees to radians
   //     [radian_angle = degree_launch_angle * (kPI/180)]
   // CODE HERE
+<<<<<<< HEAD
   double radian_angle = launch_angle * (kPI / 180);
   // (2) Compute final horizontal/x velocity
   //     [x_velocity = initial_velocity * cos(radian_angle)]
@@ -110,6 +125,25 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
   // CODE HERE
   double x_distance = x_velocity * flight_time;
   return x_distance;
+=======
+
+  // (2) Compute final horizontal/x velocity
+  //     [x_velocity = initial_velocity * cos(radian_angle)]
+  // CODE HERE
+
+  // (3) Compute final vertical/y velocity
+  //     [y_velocity = initial_velocity * sin(radian_angle) * -1]
+  // CODE HERE
+
+  // (4) Compute time of flight 
+  //     [flight_time = (y_velocity) * 2 / -9.8]
+  // CODE HERE
+
+  // (5) Compute horizontal/x distance travelled
+  //     [x_distance = x_velocity * flight_time]
+  // CODE HERE
+
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 // For testing (DO NOT ALTER)

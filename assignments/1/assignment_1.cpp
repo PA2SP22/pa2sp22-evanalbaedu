@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Name        : Coding Assignment #1
  * Author      : Evan Alba
  * Description : Caesar Cipher Encryption & Decryption lab with Data Manipulation functions.
@@ -126,3 +127,14 @@ double FindMaxValue(double high[], unsigned int size) {
   // return the max value
   return max;
 }
+=======
+ * Name        : FILL IN
+ * Author      : FILL IN
+ * Description : FILL IN
+ * Sources     : FILL IN
+ */
+
+#include "assignment_1.h"
+
+// Write Function Definitions Here (What goes below main)
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549

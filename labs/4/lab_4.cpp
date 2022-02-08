@@ -66,7 +66,7 @@ int main() {
  */
 string MakeString(string label, double value, char separator) {
   stringstream make;
-  make << label << " " << separator << " " << value;  
+  make << label << " " << separator << " " << value;
   return make.str();
 }
 
@@ -143,7 +143,7 @@ double StringToDouble(string value) {
 bool StringToBool(string value) {
   if ((value[0] == 'T') || (value[0] == 't')) {
     return true;
-  } 
+  }
   return false;
 }
 

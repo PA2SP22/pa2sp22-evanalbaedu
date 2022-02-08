@@ -1,0 +1,42 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Class Constructors'
+ONE_FILE='constructor'
+TWO='Run Class Constructor Initialization and Overload'
+TWO_FILE='initial_overload'
+THREE='Run Separate Compilation'
+THREE_FILE='separate_compilation'
+options=("Compile All" "$ONE" "$TWO" "$THREE" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    printf "\033c"
+    case $opt in
+        "Compile All")
+            make
+            break
+            ;;
+        "$ONE")
+            make $ONE_FILE
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+            make $TWO_FILE
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "$THREE")
+            make $THREE_FILE
+            ./${THREE_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+            make clean
+            break
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done

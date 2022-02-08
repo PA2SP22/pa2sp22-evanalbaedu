@@ -1,6 +1,10 @@
 /*
  * Name        : lab_3.cpp
+<<<<<<< HEAD
  * Author      : Evan Alba
+=======
+ * Author      : FILL IN
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
  * Description : Using branching statements, looping statements and string and
  *               character functions complete the functions
  */
@@ -64,6 +68,7 @@ int main() {
  * @return string - The output string specified in the documentation above
  */
 string Goldilocks(string item, int number) {
+<<<<<<< HEAD
   string status[9] = {"too hot", "too cold", "just right", "too big",
   "too small", "just right", "too hard", "too soft", "just right"};
   if ((item == "porridge") && (number == 1 || number == 2 || number == 3)) {
@@ -75,6 +80,9 @@ string Goldilocks(string item, int number) {
   } else {
     return "This bed is " + status[8];
   }
+=======
+  // CODE HERE
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 /*
@@ -90,6 +98,7 @@ string Goldilocks(string item, int number) {
  * @return int - 1 if player one wins, 2 if player two wins, 3 on a draw
  */
 int RockScissorPaper(char player_one, char player_two) {
+<<<<<<< HEAD
   player_two = toupper(player_two);
   switch (toupper(player_one)) {
     case 'R':
@@ -115,6 +124,10 @@ int RockScissorPaper(char player_one, char player_two) {
       break;
   }
   return 1;
+=======
+  // YOU MUST USE A SWITCH IN THIS FUNCTION
+  // CODE HERE
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 /*
@@ -127,10 +140,16 @@ int RockScissorPaper(char player_one, char player_two) {
  *                  the char
  */
 string CharWithAsciiValueAsString(char character) {
+<<<<<<< HEAD
   stringstream num;
   num << " " << static_cast<int>(character);
   string ascii = character + num.str();
   return ascii;
+=======
+  // CODE HERE
+
+  // HINT: try a stringstream here
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 /*
@@ -139,11 +158,15 @@ string CharWithAsciiValueAsString(char character) {
  * @return string - a string containing the converted input string
  */
 string ToLower(string input) {
+<<<<<<< HEAD
   string convert;
   for (unsigned int i = 0; i < input.length(); i++) {
     convert += tolower(input[i]);
   }
   return convert;
+=======
+  // CODE HERE
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 /*
@@ -152,11 +175,15 @@ string ToLower(string input) {
  * @return string - a string containing the converted input string
  */
 string ToUpper(string input) {
+<<<<<<< HEAD
   string convert;
   for (unsigned int i = 0; i < input.length(); i++) {
     convert += toupper(input[i]);
   }
   return convert;
+=======
+  // CODE HERE
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 /*
@@ -169,10 +196,14 @@ string ToUpper(string input) {
  *                outside the range of the string. The null character is '\0'
  */
 char GetCharacter(string input, int char_index) {
+<<<<<<< HEAD
   if ((char_index >= 0) && (char_index < static_cast<int>(input.length()))) {
     return input[char_index];
   }
   return 0;
+=======
+  // CODE HERE
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 // For testing (DO NOT ALTER)
