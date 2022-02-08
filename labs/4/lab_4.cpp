@@ -1,6 +1,6 @@
 /*
  * Name        : lab_4.cpp
- * Author      : FILL IN
+ * Author      : Evan Alba
  * Description : Use branching statements, looping statements and string and
  *               character functions to complete the functions
  */
@@ -65,7 +65,9 @@ int main() {
  *                  floating-point value
  */
 string MakeString(string label, double value, char separator) {
-  // CODE HERE
+  stringstream make;
+  make << label << " " << separator << " " << value;  
+  return make.str();
 }
 
 /*
@@ -77,7 +79,11 @@ string MakeString(string label, double value, char separator) {
  *                when value is length 0 or value is length > 1
  */
 char StringToChar(string value) {
-  // CODE HERE
+  if (value.length() == 0 || value.length() > 1) {
+    return '\0';
+  } else {
+    return value[0];
+  }
 }
 
 /*
@@ -113,7 +119,14 @@ int StringToInt(string value) {
  * @return double - A double representing the value, or 0 on failure
  */
 double StringToDouble(string value) {
-  // CODE HERE
+  double dvalue = 0;
+  stringstream point(value);
+  point.exceptions(ios_base::failbit);
+  try {
+    point >> dvalue;
+  } catch (ios_base::failure f) {
+  }
+  return dvalue;
 }
 
 /*
@@ -128,7 +141,10 @@ double StringToDouble(string value) {
  *                Return false on anything else.
  */
 bool StringToBool(string value) {
-  // CODE HERE
+  if ((value[0] == 'T') || (value[0] == 't')) {
+    return true;
+  } 
+  return false;
 }
 
 // For testing (DO NOT ALTER)
