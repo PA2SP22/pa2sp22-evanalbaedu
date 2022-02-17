@@ -1,6 +1,6 @@
 /*
  * Name        : lab_6.cpp
- * Author      : FILL IN
+ * Author      : Evan Alba
  * Description : Practicing Functions
  */
 
@@ -25,6 +25,7 @@ using std::string;
 // CODE HERE (FUNCTION PROTOTYPE)
 void Hello();
 
+
 /*
  * function name: PrintMessage
  * parameters: string message (const call-by-reference)
@@ -34,6 +35,7 @@ void Hello();
  * Display message to stdout (no newline character after)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+void PrintMessage(const string &message);
 
 /*
  * function name: GetAnswer
@@ -44,6 +46,7 @@ void Hello();
  * Return the value 42
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+int GetAnswer();
 
 /*
  * function name: FindLarger
@@ -55,6 +58,7 @@ void Hello();
  * if the values are equivalent.
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+int FindLarger(const int &num1, const int &num2);
 
 /*
  * function name: GetStats
@@ -69,6 +73,7 @@ void Hello();
  * characters in the first parameter (string)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+int GetStats(const string &text, int &upper, int &lower);
 
 /*
  * function name: BuildMessage
@@ -83,7 +88,7 @@ void Hello();
  * "Message: empty".
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-
+string BuildMessage(const string &word, const bool &needUpper);
 
 // For testing (DO NOT ALTER)
 #include <cctype>
@@ -106,6 +111,48 @@ int main() {
 // CODE HERE (FUNCTION DEFINITIONS)
 void Hello() {
   cout << "Hello world!";
+}
+
+void PrintMessage(const string &message) {
+  std::cout << message;
+}
+
+int GetAnswer() {
+  return 42;
+}
+
+int FindLarger(const int &num1, const int &num2) {
+  if (num1 > num2) {
+    return num1;
+  }
+  return num2;
+}
+
+int GetStats(const string &text, int &upper, int &lower) {
+  upper = 0, lower = 0;
+  if (text.length() > 0) {
+    for (unsigned int i = 0; i < text.length(); i++) {
+      if (isupper(text[i])) {
+        upper += 1;
+      } else if (islower(text[i])) {
+        lower += 1;
+      }
+    }
+  }
+  return text.length();
+}
+
+string BuildMessage(const string &word = "", const bool &needUpper = false) {
+  if (word.empty()) {
+    return "Message: empty";
+  } else if (needUpper == true) {
+    std::stringstream upper;
+    for (unsigned int i = 0; i < word.length(); i++) {
+      upper << static_cast<char>(toupper(word[i]));
+    }
+    return "Message: " + upper.str();
+  }
+  return "Message: " + word;
 }
 
 // For testing (DO NOT ALTER)
