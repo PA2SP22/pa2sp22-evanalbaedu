@@ -129,7 +129,7 @@ int FindLarger(const int &num1, const int &num2) {
 }
 
 int GetStats(const string &text, int &upper, int &lower) {
-  upper = 0, lower = 0;
+  upper = lower = 0;
   if (text.length() > 0) {
     for (unsigned int i = 0; i < text.length(); i++) {
       if (isupper(text[i])) {
