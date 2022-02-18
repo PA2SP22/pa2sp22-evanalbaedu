@@ -1,5 +1,4 @@
 /*
-<<<<<<< HEAD
  * Name        : Coding Assignment #1
  * Author      : Evan Alba
  * Description : Caesar Cipher Encryption & Decryption lab with Data Manipulation functions.
@@ -25,7 +24,7 @@
 // Write Function Definitions Here (What goes below main)
 bool CheckAlphabetic(const std::string &word) {
   // Check if string has no characters.
-  if (word.length() == 0) {
+  if (word.empty()) {
     return false;
   }
   // Loop through the word
@@ -62,9 +61,7 @@ bool EncryptString(std::string &secret, int shift) {
       } else if (shifted > 'z') {
         shifted -= 26;
       }
-      // Hold new encrypted letter
-      cipher += shifted;
-      // Check if letter upper
+    // Else letter is upper
     } else {
       // Shift the letter and add it to the encrypted phrase.
       shifted = static_cast<char>((static_cast<int>(secret[i])-65) +shift+ 65);
@@ -74,9 +71,9 @@ bool EncryptString(std::string &secret, int shift) {
       } else if (shifted > 'Z') {
         shifted -= 26;
       }
-      // Hold new encrypted letter
-      cipher += shifted;
     }
+    // Hold new encrypted letter
+    cipher += shifted;
   }
   // Store encrypted word back to original variable of uncrypted word.
   secret = cipher;
@@ -127,14 +124,3 @@ double FindMaxValue(double high[], unsigned int size) {
   // return the max value
   return max;
 }
-=======
- * Name        : FILL IN
- * Author      : FILL IN
- * Description : FILL IN
- * Sources     : FILL IN
- */
-
-#include "assignment_1.h"
-
-// Write Function Definitions Here (What goes below main)
->>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549

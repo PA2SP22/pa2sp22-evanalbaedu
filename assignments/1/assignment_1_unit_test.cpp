@@ -26,10 +26,6 @@ std::vector<int> failed_tests;
 // Program Execution Starts Here
 int main() {
   // Add code to manually test your functions below
-<<<<<<< HEAD
-=======
-
->>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
   // To test your code (Comment Out to Manually Test)
   UnitTest();
   // This ends program execution
