@@ -51,10 +51,10 @@ bool EncryptString(std::string &secret, int shift) {
   shift %= 26;
   // Loop through word
   for (unsigned int i = 0; i < secret.length(); i++) {
+    // Shift the letter and add it to the encrypted phrase.
+    shifted = static_cast<char>(static_cast<int>(secret[i])+shift);
     //  Check if letter lower
     if (islower(secret[i])) {
-      // Shift the letter and add it to the encrypted phrase.
-      shifted = static_cast<char>((static_cast<int>(secret[i])-97) +shift+ 97);
       // Check if shifted number is out ASCII range to put it back in Alpha
       if (shifted < 'a') {
         shifted += 26;
@@ -63,8 +63,6 @@ bool EncryptString(std::string &secret, int shift) {
       }
     // Else letter is upper
     } else {
-      // Shift the letter and add it to the encrypted phrase.
-      shifted = static_cast<char>((static_cast<int>(secret[i])-65) +shift+ 65);
       // Check if shifted number is out ASCII range to put it back in Alpha
       if (shifted < 'A') {
         shifted += 26;
