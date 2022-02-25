@@ -1,6 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <cstdio>
 
 int main(int argc, char** argv) {
   // Check if there is only ./new_cat being entered only
