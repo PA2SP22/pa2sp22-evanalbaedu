@@ -83,6 +83,7 @@ bool ProcessFile(string filename) {
       OnError();
     }
   }
+  fin.close();
   return true;
 }
 // For testing (DO NOT ALTER)

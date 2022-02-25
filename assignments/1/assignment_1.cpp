@@ -22,15 +22,15 @@
 #include <string>
 
 // Write Function Definitions Here (What goes below main)
-bool CheckAlphabetic(const std::string &word) {
+bool CheckAlphabetic(const std::string &kWord) {
   // Check if string has no characters.
-  if (word.empty()) {
+  if (kWord.empty()) {
     return false;
   }
   // Loop through the word
-  for (unsigned int i = 0; i < word.length(); i++) {
+  for (unsigned int i = 0; i < kWord.length(); i++) {
     // Check if word character has non-alpha character.
-    if (!isalpha(word[i])) {
+    if (!isalpha(kWord[i])) {
       return false;
     }
   }

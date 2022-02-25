@@ -110,7 +110,7 @@ int main() {
 
 // CODE HERE (FUNCTION DEFINITIONS)
 void Hello() {
-  cout << "Hello world!";
+  std::cout << "Hello world!";
 }
 
 void PrintMessage(const string &message) {
@@ -121,38 +121,38 @@ int GetAnswer() {
   return 42;
 }
 
-int FindLarger(const int &num1, const int &num2) {
-  if (num1 > num2) {
-    return num1;
+int FindLarger(const int &kNum1, const int &kNum2) {
+  if (kNum1 > kNum2) {
+    return kNum1;
   }
-  return num2;
+  return kNum2;
 }
 
-int GetStats(const string &text, int &upper, int &lower) {
+int GetStats(const string &kText, int &upper, int &lower) {
   upper = lower = 0;
-  if (text.length() > 0) {
-    for (unsigned int i = 0; i < text.length(); i++) {
-      if (isupper(text[i])) {
+  if (kText.length() > 0) {
+    for (unsigned int i = 0; i < kText.length(); i++) {
+      if (isupper(kText[i])) {
         upper += 1;
-      } else if (islower(text[i])) {
+      } else if (islower(kText[i])) {
         lower += 1;
       }
     }
   }
-  return text.length();
+  return kText.length();
 }
 
-string BuildMessage(const string &word = "", const bool &needUpper = false) {
-  if (word.empty()) {
+string BuildMessage(const string &kWord = "", const bool &kNeedUpper = false) {
+  if (kWord.empty()) {
     return "Message: empty";
-  } else if (needUpper == true) {
+  } else if (kNeedUpper == true) {
     std::stringstream upper;
-    for (unsigned int i = 0; i < word.length(); i++) {
-      upper << static_cast<char>(toupper(word[i]));
+    for (unsigned int i = 0; i < kWord.length(); i++) {
+      upper << static_cast<char>(toupper(kWord[i]));
     }
     return "Message: " + upper.str();
   }
-  return "Message: " + word;
+  return "Message: " + kWord;
 }
 
 // For testing (DO NOT ALTER)
