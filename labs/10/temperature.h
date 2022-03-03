@@ -1,16 +1,19 @@
 /*
  * Name        : temperature.h
- * Author      : FILL IN
+ * Author      : Evan Alba
  * Description : Class Header File
  */
 
+#include <iomanip>
+#include <iostream> //DELETE
 #include <string>
 #include <sstream>
 using std::string;
 using std::stringstream;
 
 // ADD HEADER GUARD HERE
-
+#ifndef climate
+#define climate
 
 /*
  * Class Temperature.
@@ -23,14 +26,18 @@ class Temperature {
    * Constructor #1.
    * Sets kelvin to 0
    */
-  Temperature();
+  Temperature() {
+   kelvin_ = 0;
+  }
 
   /*
    * Constructor #2.
    * Sets kelvin to the supplied value
    * @param double kelvin - The value to set the internal kelvin to
    */
-  Temperature(double kelvin);
+  Temperature(double kelvin) {
+   kelvin_ = kelvin;
+  }
 
   /*
    * Constructor #3.
@@ -43,7 +50,16 @@ class Temperature {
    * @param char unit - The type of unit temp is. Will be either 'F' or 'C',
    *                    case-insensitive
    */
-  Temperature(double temp, char unit);
+  Temperature(double temp, char unit) {
+   unit = toupper(unit);
+   if (unit == 'F') {
+    SetTempFromFahrenheit(temp);
+   } else if (unit == 'C') {
+    SetTempFromCelsius(temp);
+   } else {
+    SetTempFromKelvin(temp);
+   }
+  }
 
   /*
    * The temperature will come in as kelvin and this function will set the
@@ -51,7 +67,7 @@ class Temperature {
    * @param double kelvin - The value to set the internal kelvin to.
    */
   void SetTempFromKelvin(double kelvin);
-
+ 
 
   /*
    * The temperature will come in as Celsius and this function will set the
@@ -114,3 +130,4 @@ class Temperature {
 };
 
 // REST OF HEADER GUARD GOES HERE
+#endif
