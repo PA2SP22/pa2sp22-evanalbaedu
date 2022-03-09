@@ -1,0 +1,65 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Pointer Operators'
+ONE_FILE='pointer_operators'
+TWO='Run Dynamic'
+TWO_FILE='dynamic'
+THREE='Run Dynamic Arrays'
+THREE_FILE='dynamic_arrays'
+FOUR='Run Functions and Pointers'
+FOUR_FILE='functions_and_pointers'
+options=("Compile All" "$ONE" "$TWO" "$THREE" "$FOUR" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Compile All")
+            printf "\033c"
+			echo -e "Compiling All\n---------------"
+			make
+            break
+            ;;
+        "$ONE")
+		    printf "\033c"
+			echo -e "Compiling $ONE\n---------------"
+            make $ONE_FILE
+			echo -e "\nOutput\n----------------"
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+		    printf "\033c"
+			echo -e "Compiling $TWO\n---------------"
+            make $TWO_FILE
+			echo -e "\nOutput\n----------------"
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "$THREE")
+		    printf "\033c"
+			echo -e "Compiling $THREE\n---------------"
+            make $THREE_FILE
+			echo -e "\nOutput\n----------------"
+            ./${THREE_FILE}.run
+            break
+            ;;
+	    "$FOUR")
+		    printf "\033c"
+			echo -e "Compiling $FOUR\n---------------"
+            make $FOUR_FILE
+			echo -e "\nOutput\n----------------"
+            ./${FOUR_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+		    printf "\033c"
+			echo -e "Cleaning Up Executables\n---------------"
+            make clean
+            break
+            ;;
+        "Quit")
+		    printf "\033c"
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done

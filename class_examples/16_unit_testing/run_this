@@ -1,0 +1,36 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Assert'
+ONE_FILE='assert'
+
+options=("Compile All" "$ONE" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Compile All")
+            printf "\033c"
+			echo -e "Compiling All\n---------------"
+			make
+            break
+            ;;
+        "$ONE")
+		    printf "\033c"
+			echo -e "Compiling $ONE\n---------------"
+            make $ONE_FILE
+			echo -e "\nOutput\n----------------"
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+		    printf "\033c"
+			echo -e "Cleaning Up Executables\n---------------"
+            make clean
+            break
+            ;;
+        "Quit")
+		    printf "\033c"
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
