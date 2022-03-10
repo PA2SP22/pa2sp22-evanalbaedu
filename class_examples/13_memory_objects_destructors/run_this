@@ -1,0 +1,95 @@
+printf "\033c"
+PS3='Please enter your choice: '
+ONE='Run Dynamic Multidimensional Arrays'
+ONE_FILE='dynamic_multi_array'
+TWO='Run Dynamic Objects'
+TWO_FILE='dynamic_objects'
+THREE='Run Dynamic Objects and Arrays'
+THREE_FILE='dynamic_objects_arrays'
+FOUR='Run Delete Keyword'
+FOUR_FILE='delete'
+FIVE='Run Destructor'
+FIVE_FILE='destructor'
+SIX='Run Dynamic Objects in Dynamic Arrays'
+SIX_FILE='dynamic_objects_in_dynamic_array'
+SEVEN='Run More Pointer Examples'
+SEVEN_FILE='more_pointers'
+options=("Compile All" "$ONE" "$TWO" "$THREE" "$FOUR" "$FIVE" "$SIX" "$SEVEN" "Clean up Executables" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Compile All")
+            printf "\033c"
+			echo -e "Compiling All\n---------------"
+			make
+            break
+            ;;
+        "$ONE")
+		    printf "\033c"
+			echo -e "Compiling $ONE\n---------------"
+            make $ONE_FILE
+			echo -e "\nOutput\n----------------"
+            ./${ONE_FILE}.run
+            break
+            ;;
+        "$TWO")
+		    printf "\033c"
+			echo -e "Compiling $TWO\n---------------"
+            make $TWO_FILE
+			echo -e "\nOutput\n----------------"
+            ./${TWO_FILE}.run
+            break
+            ;;
+        "$THREE")
+		    printf "\033c"
+			echo -e "Compiling $THREE\n---------------"
+            make $THREE_FILE
+			echo -e "\nOutput\n----------------"
+            ./${THREE_FILE}.run
+            break
+            ;;
+	    "$FOUR")
+		    printf "\033c"
+			echo -e "Compiling $FOUR\n---------------"
+            make $FOUR_FILE
+			echo -e "\nOutput\n----------------"
+            ./${FOUR_FILE}.run
+            break
+            ;;
+		"$FIVE")
+		    printf "\033c"
+			echo -e "Compiling $FIVE\n---------------"
+            make $FIVE_FILE
+			echo -e "\nOutput\n----------------"
+            ./${FIVE_FILE}.run
+            break
+            ;;
+		"$SIX")
+		    printf "\033c"
+			echo -e "Compiling $SIX\n---------------"
+            make $SIX_FILE
+			echo -e "\nOutput\n----------------"
+            ./${SIX_FILE}.run
+            break
+            ;;
+		"$SEVEN")
+		    printf "\033c"
+			echo -e "Compiling $SEVEN\n---------------"
+            make $SEVEN_FILE
+			echo -e "\nOutput\n----------------"
+            ./${SEVEN_FILE}.run
+            break
+            ;;
+        "Clean up Executables")
+		    printf "\033c"
+			echo -e "Cleaning Up Executables\n---------------"
+            make clean
+            break
+            ;;
+        "Quit")
+		    printf "\033c"
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
