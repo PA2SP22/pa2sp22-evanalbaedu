@@ -1,11 +1,12 @@
 /*
  * Name        : lab_12.cpp
- * Author      : FILL IN
+ * Author      : Evan Alba
  * Description : Working with Pointers and Dynamic Variables / Arrays
  */
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <new>
 using std::cout;
 using std::endl;
 using std::string;
@@ -66,7 +67,50 @@ int main() {
 }
 
 // CODE HERE -- FUNCTION DEFINITIONS
+int* MakeDynoIntArray(unsigned int size) {
+  return new (std::nothrow) int[size];
+}
 
+
+int Sum(int* the_array, unsigned int array_size) {
+  if (the_array == nullptr) {
+    throw "NULL ARRAY REFERENCE";
+  } else {
+    int sum = 0;
+    for (unsigned int i = 0; i < array_size; i++) {
+      sum += the_array[i];
+    }
+    return sum;
+  }
+}
+
+int Max(int* the_array, unsigned int array_size) {
+  if (the_array == nullptr) {
+    throw "NULL ARRAY REFERENCE";
+  } else {
+    int max = the_array[0];
+    for (unsigned int i = 1; i < array_size; i++) {
+      if (the_array[i] > max) {
+        max = the_array[i];
+      }
+    }
+    return max;
+  }
+}
+
+int Min(int* the_array, unsigned int array_size) {
+  if (the_array == nullptr) {
+    throw "NULL ARRAY REFERENCE";
+  } else {
+    int min = the_array[0];
+    for (unsigned int i = 1; i < array_size; i++) {
+      if (the_array[i] < min) {
+        min = the_array[i];
+      }
+    }
+    return min;
+  }
+}
 
 // For testing (DO NOT ALTER)
 void UnitTest() {
