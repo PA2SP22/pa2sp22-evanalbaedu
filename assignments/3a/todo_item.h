@@ -1,5 +1,7 @@
-#ifndef item
-#define item
+// Luke: Looks like item is already used by some other library
+// Luke: I like my header guards to have my name so they are unique
+#ifndef ITEM_ALBA
+#define ITEM_ALBA
 #include <iostream>
 #include <string>
 
