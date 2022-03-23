@@ -1,11 +1,5 @@
 #include "todo_item.h"
 
-// TodoItem::TodoItem(std::string info, int rank, bool done) {
-//   description_ = info;
-//   priority_ = rank;
-//   completed_ = done;
-// }
-
 void TodoItem::set_description(std::string info) {
   description_ = info;
 }

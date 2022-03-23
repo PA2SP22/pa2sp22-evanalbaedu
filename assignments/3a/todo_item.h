@@ -5,6 +5,7 @@
 
 class TodoItem {
   public:
+    
     TodoItem(std::string info, int rank = 1, bool done = false) {
       description_ = info;
       priority_ = rank;
