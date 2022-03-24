@@ -28,8 +28,6 @@ std::vector<int> failed_tests;
 // Program Execution Starts Here
 int main() {
   // START DEBUGGING CODE
-  // TodoItem obj("SUCCESSSSSSS!!!!!!!!!!!!");
-  // std::cout << obj.description() << std::endl;
   // END DEBUGINH CODE
   // To test your code (DO NOT ALTER)
   UnitTest();
