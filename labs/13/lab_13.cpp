@@ -1,11 +1,12 @@
 /*
  * Name        : lab_13.cpp
- * Author      : FILL IN
+ * Author      : Evan Alba
  * Description : Working with Pointers and Dynamic Objects
  */
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <new>
 using std::cout;
 using std::endl;
 using std::string;
@@ -84,7 +85,101 @@ int main() {
 }
 
 // CODE HERE -- FUNCTION DEFINITION
+/*
+ * Allocate memory for a dynamic string with specified contents.
+ * @param string contents - The desired contents of the dynamic string
+ * @return string* - A pointer to the newly allocated string
+ */
+string* MakeDynoString(string contents) {
+  return new (std::nothrow) string (contents);
+}
 
+/*
+ * Free the memory associated with a dynamic string and NULL out its pointer.
+ * @param string *& the_string - A pointer (passed by reference) to a dynamic
+ *                               string
+ */
+void ClearDynoString(string *&the_string) {
+  delete the_string;
+  the_string = NULL;
+}
+
+/*
+ * Count the number of alphabetic and numeric characters in a string and return
+ * its length.
+ * @uses isdigit() and isalpha()
+ * @param string* the_string - A pointer to the string in which characters will
+ *                             be counted
+ * @param unsigned int &alpha - Contains the count of alphabetic characters in
+ *                              the string on return
+ * @param unsinged int &num - Contains the count of numeric characters in the
+ *                            string on return
+ * @return unsigned int - Contains the length of the_string
+ * @throw The message "NULL STRING REFERENCE" if the_string is NULL
+ */
+unsigned int CountChars(string* theString, unsigned int &alpha,
+                        unsigned int &num) {
+  if (theString == nullptr) {
+    throw "NULL STRING REFERENCE";
+  } else {
+    string text = *theString;
+    alpha = 0;
+    num = 0;
+    for (unsigned int i = 0; i < theString->length(); i++) {
+      if (isalpha(text[i])) {
+        alpha += 1;
+      } else if (isdigit(text[i])) {
+        num += 1;
+      }
+    }
+    return theString->length();
+  }
+}
+
+/*
+ * Find a word inside of a string.
+ * @uses String Member function find()
+ * @uses String Member Variable npos
+ * @param string *the_string - The string in which the search for a word will
+ *                             take place
+ * @param string the_word - The word to look for inside of the_string
+ * @return bool - True if the_word is found in the_string, else false
+ * @throw The message "NULL STRING REFERENCE" if the_string is NULL
+ */
+bool FindWord(string *the_string, string the_word) {
+  if (the_string == nullptr) {
+    throw "NULL STRING REFERENCE";
+  } else {
+    if (the_string->find(the_word) != string::npos) {
+      return true;
+    }
+    return false;
+  }
+}
+
+/*
+ * Replace one word in a string with another word.
+ * @uses String Member Function find()
+ * @uses String Member Function replace()
+ * @param string *the_string -  The string that will have a word replaced
+ * @param string old_word  - The word inside of the_string being replaced
+ * @param string new_word - The word that will be used to replace old_word in
+ *                          the_string
+ * @return bool - True if old_word was found and replaced, else return false
+ * @throw The message "NULL STRING REFERENCE" if the_string is NULL
+ */
+bool ReplaceWord(string* the_string, string old_word, string new_word) {
+  if (the_string == nullptr) {
+    throw "NULL STRING REFERENCE";
+  } else {
+    if (the_string->find(old_word) != string::npos) {
+      the_string->replace(the_string->find(old_word), old_word.size(),
+      new_word);
+      return true;
+    }
+    return false;
+  }
+}
 
 // For testing (DO NOT ALTER)
 void UnitTest() {
