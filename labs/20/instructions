@@ -1,0 +1,75 @@
+Declare and implement a class that provides the following interface EXACTLY.
+You will modify 2 files, sl_list.h and sl_list.cpp
+You will also need to use your sl_node.h and sl_node.cpp from the previous exercises
+
+class name: SLList
+
+private data members:
+
+	SLNode* head_ - Points to the first node in a singly-linked list
+	SLNode* tail_ - Points to the last node in a singly-linked list
+	unsigned int size_ - Holds the count of the number of nodes in the list
+	
+private functions:
+
+    void InsertHead(int) - Create a new dynamic SLNode with the contents of 
+						   the integer parameter and attach as head of the list
+						   
+	void InsertTail(int) - Create a new dynamic SLNode with the contents of 
+						   the integer parameter and attach as the tail of the list
+	
+	void RemoveHead() - Remove the head node from the list. Does nothing if the 
+	                    list is empty
+						
+	void RemoveTail() - Remove the tail node from the list. Does nothing if the 
+	                    list is empty
+public functions:
+
+	Default Constructor - Sets values head_ and tail_ to NULL and size_ to 0
+	
+	Destructor - calls Clear()
+	
+	void Insert(int) - Creates a new SLNode with the contents of the parameter and
+	                   inserts it into the correct position in the list. The list
+					   will be sorted with the lowest values in the front and the
+					   largest values in the back.
+	
+	bool RemoveFirstOccurence(int) - Remove the first occurence of the supplied parameter
+	                                 found as the data in a node. Return true on successful
+									 removal or false if the list is empty of if the value
+									 is not found/removed
+						
+	int GetHead() const - Returns the contents of the head node (The node the head is
+	                      pointing to)
+					      Return 0 if the list is empty
+					
+	int GetTail() const - Returns the contents of the tail node (The node the tail is
+	                      pointing to)
+					      Return 0 is the list is empty
+	
+	void Clear() - Clear the entire contents of the list, freeing all memory
+	               associated with all nodes
+	
+	unsigned int size() const - Return the current size of the list
+	
+	string ToString() const - Return a string representation of the contents
+	                          of all nodes in the list, in the format
+	                          NUM1, NUM2 , ..., LASTNUM
+							  Return the empty string if the list is empty
+
+A Makefile has been included with this exercise. Your options are:
+make (Tries to compile your exercise)
+make style (Checks your file for some styling mistakes. Note this does not check
+            variable / function names / all indentation)
+make clean (Removes the executable)
+
+Please note you need to follow programming style guidelines for this exercise.
+
+Exercises having the following will lose 10% per category:
+- Code (such as output statements) not explicitly required
+- Bad Programming Style (Variable Names, Formatting)
+
+Exercises that DO NOT COMPILE will receive a ZERO!
+
+NOTE: Exercises that compile with warnings will be treated as if they did not
+      compile. (i.e. they will receive a zero)
