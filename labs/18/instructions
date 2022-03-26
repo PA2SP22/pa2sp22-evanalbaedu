@@ -1,0 +1,49 @@
+Declare and implement a class that provides the following interface EXACTLY.
+You will create 2 new files, sl_list.h and sl_list.cpp
+You will also need to use your sl_node.h and sl_node.cpp from the previous exercise
+
+class name: SLList
+
+private data members:
+
+	head_, SLNode* that points to the first node in a singly-linked list
+	size_, unsigned int the count of the number of nodes in the list
+
+public function interface:
+
+	default constructor, sets values head_(NULL) and size_(0)
+	
+	destructor, calls the clear function
+	
+	void InsertHead(int), create a new dynamic SLNode with the contents of 
+						  the parameter and attach as head of list
+	
+	void RemoveHead(), remove the head node from the list, or does nothing if
+					   the list is empty
+	
+	void Clear(), clear the entire contents of the list, freeing all memory
+	              associated with all nodes
+	
+	unsigned int size() const
+	
+	string ToString() const, return a string representation of the contents
+	                          of all nodes in the list, in the format
+	                          NUM1, NUM2 , ..., LASTNUM
+							  return empty string on empty list
+
+A Makefile has been included with this exercise. Your options are:
+make (Tries to compile your exercise)
+make style (Checks your file for some styling mistakes. Note this does not check
+            variable / function names / all indentation)
+make clean (Removes the executable)
+
+Please note you need to follow programming style guidelines for this exercise.
+
+Exercises having the following will lose 10% per category:
+- Code (such as output statements) not explicitly required
+- Bad Programming Style (Variable Names, Formatting)
+
+Exercises that DO NOT COMPILE will receive a ZERO!
+
+NOTE: Exercises that compile with warnings will be treated as if they did not
+      compile. (i.e. they will receive a zero)
