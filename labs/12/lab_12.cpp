@@ -87,15 +87,14 @@ int Sum(int* the_array, unsigned int array_size) {
 int Max(int* the_array, unsigned int array_size) {
   if (the_array == nullptr) {
     throw "NULL ARRAY REFERENCE";
-  } else {
-    int max = the_array[0];
-    for (unsigned int i = 1; i < array_size; i++) {
-      if (the_array[i] > max) {
-        max = the_array[i];
-      }
-    }
-    return max;
   }
+  int max = the_array[0];
+  for (unsigned int i = 1; i < array_size; i++) {
+    if (the_array[i] > max) {
+      max = the_array[i];
+    }
+  }
+  return max;
 }
 
 int Min(int* the_array, unsigned int array_size) {

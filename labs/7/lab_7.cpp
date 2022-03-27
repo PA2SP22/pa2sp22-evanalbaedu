@@ -61,7 +61,6 @@ bool ProcessFile(string filename) {
   ifstream fin(filename);
   if (fin.fail()) {
     std::cerr << "Error opening one of the files.\n";
-    exit(1);
     return false;
   }
   string line;

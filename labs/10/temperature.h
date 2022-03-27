@@ -5,7 +5,6 @@
  */
 
 #include <iomanip>
-#include <iostream> //DELETE
 #include <string>
 #include <sstream>
 using std::string;
@@ -23,42 +22,42 @@ using std::stringstream;
 class Temperature {
  public:
   /*
-   * Constructor #1.
-   * Sets kelvin to 0
-   */
+  * Constructor #1.
+  * Sets kelvin to 0
+  */
   Temperature() {
-   kelvin_ = 0;
+    kelvin_ = 0;
   }
 
-  /*
-   * Constructor #2.
-   * Sets kelvin to the supplied value
-   * @param double kelvin - The value to set the internal kelvin to
-   */
+/*
+* Constructor #2.
+* Sets kelvin to the supplied value
+* @param double kelvin - The value to set the internal
+* kelvin to
+*/
   Temperature(double kelvin) {
-   kelvin_ = kelvin;
+    kelvin_ = kelvin;
   }
-
-  /*
-   * Constructor #3.
-   * Converts the supplied temperature to kelvin and internally stores it.
-   * The temperature's unit will be provided in the second argument.
-   * If the second argument is not value (i.e. not 'F' or 'C') assume the
-   * temperature is in kelvin
-   * @param double temp - The value to set the internal kelvin to once
-   *                    - converted.
-   * @param char unit - The type of unit temp is. Will be either 'F' or 'C',
-   *                    case-insensitive
-   */
+/*
+* Constructor #3.
+* Converts the supplied temperature to kelvin and internally stores it.
+* The temperature's unit will be provided in the second argument.
+* If the second argument is not value (i.e. not 'F' or 'C') assume the
+* temperature is in kelvin
+* @param double temp - The value to set the internal kelvin to once
+*                    - converted.
+* @param char unit - The type of unit temp is. Will be either 'F' or 'C',
+*                    case-insensitive
+*/
   Temperature(double temp, char unit) {
-   unit = toupper(unit);
-   if (unit == 'F') {
-    SetTempFromFahrenheit(temp);
-   } else if (unit == 'C') {
+    unit = toupper(unit);
+    if (unit == 'F') {
+      SetTempFromFahrenheit(temp);
+    } else if (unit == 'C') {
     SetTempFromCelsius(temp);
-   } else {
-    SetTempFromKelvin(temp);
-   }
+    } else {
+      SetTempFromKelvin(temp);
+    }
   }
 
   /*
@@ -67,7 +66,6 @@ class Temperature {
    * @param double kelvin - The value to set the internal kelvin to.
    */
   void SetTempFromKelvin(double kelvin);
- 
 
   /*
    * The temperature will come in as Celsius and this function will set the

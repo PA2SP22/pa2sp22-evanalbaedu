@@ -29,14 +29,16 @@ string Temperature::ToString(char unit) const {
     stringstream s;
     unit = toupper(unit);
     if (unit == 'K') {
-        s << std::fixed << std::setprecision(2) << GetTempAsKelvin() << " Kelvin";
+        s << std::fixed << std::setprecision(2) << GetTempAsKelvin()
+        << " Kelvin";
     } else if (unit == 'C') {
-        s << std::fixed << std::setprecision(2) << GetTempAsCelsius() << " Celsius";
+        s << std::fixed << std::setprecision(2) << GetTempAsCelsius()
+        << " Celsius";
     } else if (unit == 'F') {
-        s << std::fixed << std::setprecision(2) << GetTempAsFahrenheit() << " Fahrenheit";   
+        s << std::fixed << std::setprecision(2) << GetTempAsFahrenheit()
+        << " Fahrenheit";
     } else {
         s << "Invalid Unit";
-    } 
-    
+    }
     return s.str();
 }
