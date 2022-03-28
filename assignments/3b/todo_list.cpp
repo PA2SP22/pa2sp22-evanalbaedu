@@ -4,16 +4,26 @@
  * Description : CPP File for class TodoList.
  */
 #include "todo_list.h"
-#include "todo_item.h"
+#include "todo_item.cpp"
 
-void AddItem(TodoItem* add = new TodoItem()) {}
-void DeleteItem(int area) {}
-int* GetItem(int spot) {}
-unsigned int GetSize() {
+void TodoList::AddItem(TodoItem* add = new TodoItem()) {
+  if (size_ == cap_) {
+    cap_ += 10;
+  }
+  for (int i = 0; i < cap_; i++) {
+    if (list_[i] == nullptr) {
+      list_[i] = add;
+      break;
+    }
+  }
+}
+void TodoList::DeleteItem(int area) {}
+int* TodoList::GetItem(int spot) {}
+unsigned int TodoList::GetSize() const {
   return size_;
 }
-unsigned int GetCapacity() {
-  return size_;
+unsigned int TodoList::GetCapacity() const {
+  return cap_;
 }
-void Sort() {}
-std::string ToFile() {}
+void TodoList::Sort() {}
+std::string TodoList::ToFile() {}

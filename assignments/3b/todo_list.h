@@ -18,6 +18,13 @@ class TodoList {
     }
     
     ~TodoList() {}
+    void AddItem(TodoItem* add = new TodoItem());
+    void DeleteItem(int area);
+    int* GetItem(int spot);
+    unsigned int GetSize() const;
+    unsigned int GetCapacity() const;
+    void Sort();
+    std::string ToFile();
   
  private:
     unsigned int size_ = 0; /* Current size of your list. */
