@@ -13,16 +13,15 @@ class TodoList {
     TodoList() {
       list_ = new std::string[cap_];
       for (unsigned int i = 0; i < cap_; i++) {
-        list_[i] = NULL;
+        list_[i] = nullptr;
       }
-      //std::cout << TodoItem << std::endl;
     }
     
-    //~TodoList() {}
+    ~TodoList() {}
   
  private:
     unsigned int size_ = 0; /* Current size of your list. */
     unsigned int cap_ = 25; /* Max capacity of your list. */
-    std::string *list_; /* Pointer to TodoItem*. */
+    std::string* list_; /* Pointer to TodoItem*. */
 };
 #endif
