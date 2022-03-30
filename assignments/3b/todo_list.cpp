@@ -9,19 +9,15 @@ void TodoList::AddItem(TodoItem* add) {
   if (size_ == cap_) {
     IncreaseCap();
   }
-  for (int i = 0; i < cap_; i++) {
-    if (list_[i] == nullptr) {
-      list_[i] = add;
-      size_ += 1;
-      break;
-    }
-  }
+  list_[size_] = add;
+  size_ += 1;
 }
 
 void TodoList::DeleteItem(int area) {
   if (list_[area-1] != nullptr) {
     list_[area-1] = nullptr;
     TightenArray(); 
+    size_ -= 1;
   }
 }
 
@@ -42,37 +38,60 @@ unsigned int TodoList::GetCapacity() const {
 
 void TodoList::Sort() {}
 
-std::string TodoList::ToFile() {}
+std::string TodoList::ToFile() {
+  if (size_ == 0) {
+    return "";
+  }
+  std::stringstream all;
+  for (int i = 0; i < cap_; i++) {
+    if (list_[i] != nullptr) {
+      all << list_[i]->ToFile() << std::endl;
+    }
+  }
+  return all.str();
+}
 
-std::ostream& operator << (std::ostream &out, const TodoList &obj) {}
+std::ostream& operator << (std::ostream &out, const TodoList &obj) {
+  // Call toFile()
+  for (int i = 0; i < cap_; i++) {
+    if (list_[i] != nullptr) {
+      out << i;
+    }
+  }
+  // return out;
+}
 
 /* PRIVATE */
 void TodoList::IncreaseCap() {
   cap_ += 10;
+  TodoItem** extend = new TodoItem*[cap_];
+  for (unsigned int i = 0; i < cap_; i++) {
+    extend[i] = list_[i];
+  }
+  delete[] list_;
+  list_ = extend;
 }
 
 void TodoList::TightenArray() {
-  if (size_  >= 1) {
-    int need = size_;
-    for (int i = 0; i < cap_; i++) {
+  unsigned int need = size_;
+  for (unsigned int i = 0; i < cap_; i++) {
       
-      if (need > 0) {
+    if (need > 0) {
     
-        if (list_[i] == nullptr) {
-          // Look for number
-          for (int x = 0; i < cap_; i++) {
-            if (list_[x] != nullptr) {
-              list_[i] = list_[x];
+      if (list_[i] == nullptr) {
+        // Look for number
+        for (unsigned int x = 0; i < cap_; i++) {
+          if (list_[x] != nullptr) {
+            list_[i] = list_[x];
               break;
-            }
           }
-          need -= 1;
         }
-        
-      } else {
-        break;
+        need -= 1;
       }
-      
+        
+    } else {
+      break;
     }
+      
   }
 }

@@ -8,6 +8,7 @@
 #include "todo_item.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 
 class TodoList {
  public:
@@ -18,7 +19,13 @@ class TodoList {
       }
     }
     
-    ~TodoList() {}
+    ~TodoList() {
+      for (unsigned int i = 0; i < size_; i++) {
+        delete list_[i];
+      }
+      delete[] list_;
+      //list_ = nullptr;
+    }
     
     void AddItem(TodoItem* add);
     void DeleteItem(int area);
