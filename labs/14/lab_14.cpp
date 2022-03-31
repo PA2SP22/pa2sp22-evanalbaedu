@@ -68,7 +68,72 @@ int main() {
 }
 
 // CODE HERE -- FUNCTION DEFINITION
+// for i = (n - 1) to 1
+// for j = 0 to (i - 1)
+// if A[j] > A[j + 1]
+// swap(A[j], A[j + 1])
+int BubbleSort(int the_array[], unsigned int size) {
+  int pass = 0;
+  for (int i = (size-1); i >= 1; i--) {
+    pass += 1;
+    for (int j = 0; j <= (i-1); j++) {
+      if (the_array[j] > the_array[j+1]) {
+        SwapValues(the_array[j], the_array[j+1]);
+      }
+    }
+  }
+  return pass;
+}
 
+// for i = (n - 1) to 1
+// swapped = false;
+// for j = 0 to (i - 1)
+// if A[j] > A[j + 1]
+// swap(A[j], A[j + 1])
+// swapped = true
+// if swapped = false
+// break out of the loop
+int OptimizedBubbleSort(int the_array[], unsigned int size) {
+  int pass = 0;
+  for (int i = (size-1); i >= 1; i--) {
+    pass += 1;
+    bool swapped = false;
+    for (int j = 0; j <= (i-1); j++) {
+      if (the_array[j] > the_array[j+1]) {
+        SwapValues(the_array[j], the_array[j+1]);
+        swapped = true;
+      }
+    }
+    if (swapped == false) {
+      break;
+    }
+  }
+  return pass;
+}
+
+// for i = 0 to n - 1
+// smallest = i
+// for j = i + 1 to (n - 1)
+// if A[j] < A[smallest]
+// smallest = j
+// if smallest is not equal to i
+// swap(A[i], A[smallest])
+int SelectionSort(int the_array[], unsigned int size) {
+  int pass = 0;
+  for (unsigned int i = 0; i <= (size-1); i++) {
+    unsigned int smallest = i;
+    pass += 1;
+    for (unsigned int j = (i+1); j <= (size-1); j++) {
+      if (the_array[j] < the_array[smallest]) {
+        smallest = j;
+      }
+    }
+    if (smallest != i) {
+      SwapValues(the_array[i], the_array[smallest]);
+    }
+  }
+  return pass;
+}
 
 void SwapValues(int &value_1, int &value_2) {
   // DO NOT ALTER THE NEXT 3 LINES!!!
@@ -76,6 +141,9 @@ void SwapValues(int &value_1, int &value_2) {
     cout << value_1 << " " << value_2 << endl;
   }
   // Code SWAP Algorithm Here
+  int temp = value_1;
+  value_1 = value_2;
+  value_2 = temp;
 }
 
 // For testing (DO NOT ALTER)
