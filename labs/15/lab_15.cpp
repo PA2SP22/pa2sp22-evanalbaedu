@@ -1,6 +1,6 @@
 /*
  * Name        : lab_15.cpp
- * Author      : FILL IN
+ * Author      : Evan Alba
  * Description : Working with Insertion and Shell Sort
  */
 #include <iostream>
@@ -61,7 +61,52 @@ int main() {
 }
 
 // CODE HERE -- FUNCTION DEFINITION
+// for i = 0 to (n - 1)
+// j = i
+// while (j > 0) and (A[j] < A[j - 1])
+//   swap(A[j], A[j - 1])
+//   j = j - 1
+int InsertionSort(int the_array[], unsigned int size) {
+  int pass = 0;
+  for (unsigned int i = 0; i <= (size - 1); i++) {
+    pass += 1;
+    int j = i;
+    while ((j > 0) && (the_array[j] < the_array[j - 1])) {
+      SwapValues(the_array[j], the_array[j - 1]);
+      j = j - 1;
+    }
+  }
+  return pass;
+}
 
+// gap = n / 2
+// while gap > 0
+//  for i = gap to n - 1
+//    temp = a[i]
+//    j = i
+//    while j >= gap and a[j - gap] > temp
+//      a[j] = a[j - gap]
+//      j = j - gap
+//    a[j] = temp
+//  gap = gap / 2
+int ShellSort(int the_array[], unsigned int size) {
+  int pass = 0;
+  int gap = size / 2;
+  while (gap > 0) {
+    pass += 1;
+    for (unsigned int i = gap; i <= (size - 1); i++) {
+      int temp = the_array[i];
+      int j = i;
+      while ((j >= gap) && (the_array[j - gap]) > temp) {
+        the_array[j] = the_array[j - gap];
+        j -= gap;
+      }
+      the_array[j] = temp;
+    }
+    gap /= 2;
+  }
+  return pass;
+}
 
 void SwapValues(int &value_1, int &value_2) {
   // DO NOT ALTER THE NEXT 3 LINES!!!
@@ -69,6 +114,9 @@ void SwapValues(int &value_1, int &value_2) {
     cout << value_1 << " " << value_2 << endl;
   }
   // Code SWAP Algorithm Here
+  int temp = value_1;
+  value_1 = value_2;
+  value_2 = temp;
 }
 
 // For testing (DO NOT ALTER)
