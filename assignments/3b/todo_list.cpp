@@ -13,19 +13,23 @@ void TodoList::AddItem(TodoItem* add) {
   size_ += 1;
 }
 
-void TodoList::DeleteItem(int area) {
-  if (list_[area-1] != nullptr) {
-    list_[area-1] = nullptr;
-    TightenArray(); 
+void TodoList::DeleteItem(unsigned int area) {
+  if ((area > 0) && (area <= size_)) {
+    delete list_[area - 1];
+    list_[area - 1] = nullptr;
     size_ -= 1;
+    TightenArray(area - 1);
   }
 }
 
 TodoItem* TodoList::GetItem(int spot) {
-  if (list_[spot-1] == nullptr) {
-    return nullptr;
+  if ((size_ > 0) && (size_ <= cap_)) {
+    if (list_[spot-1] == nullptr) {
+      return nullptr;
+    }
+    return list_[spot - 1];
   }
-  return list_[spot-1];
+  return nullptr;
 }
 
 unsigned int TodoList::GetSize() const {
@@ -36,62 +40,53 @@ unsigned int TodoList::GetCapacity() const {
   return cap_;
 }
 
-void TodoList::Sort() {}
-
-std::string TodoList::ToFile() {
-  if (size_ == 0) {
-    return "";
-  }
-  std::stringstream all;
-  for (int i = 0; i < cap_; i++) {
-    if (list_[i] != nullptr) {
-      all << list_[i]->ToFile() << std::endl;
+void TodoList::Sort() {
+  for (unsigned int i = 0; i <= (size_ - 1); i++) {
+    int j = i;
+    while ((j > 0) && (list_[j]->priority() < list_[j - 1]->priority())) {
+      std::swap(list_[j], list_[j - 1]);
+      j -= 1;
     }
   }
-  return all.str();
 }
 
-std::ostream& operator << (std::ostream &out, const TodoList &obj) {
-  // Call toFile()
-  for (int i = 0; i < cap_; i++) {
-    if (list_[i] != nullptr) {
-      out << i;
+std::string TodoList::ToFile() {
+  if ((size_ > 0) && (size_ <= cap_)) {
+    std::stringstream all;
+    for (unsigned int i = 0; i < size_; i++) {
+        all << list_[i]->ToFile() << std::endl;
     }
+    return all.str();
   }
-  // return out;
+  return "";
+}
+
+std::ostream &operator << (std::ostream &out, const TodoList &obj) {
+  for (unsigned int i = 0; i < obj.size_; i++) {
+    out << obj.list_[i]->description() << obj.list_[i]->priority()
+    << obj.list_[i]->completed() << std::endl;
+  }
+  return out;
 }
 
 /* PRIVATE */
 void TodoList::IncreaseCap() {
   cap_ += 10;
   TodoItem** extend = new TodoItem*[cap_];
-  for (unsigned int i = 0; i < cap_; i++) {
+  for (unsigned int i = 0; i < size_; i++) {
     extend[i] = list_[i];
+  }
+  for (unsigned int i = size_; i < cap_; i++) {
+    extend[i] = nullptr;
   }
   delete[] list_;
   list_ = extend;
 }
 
-void TodoList::TightenArray() {
-  unsigned int need = size_;
-  for (unsigned int i = 0; i < cap_; i++) {
-      
-    if (need > 0) {
-    
-      if (list_[i] == nullptr) {
-        // Look for number
-        for (unsigned int x = 0; i < cap_; i++) {
-          if (list_[x] != nullptr) {
-            list_[i] = list_[x];
-              break;
-          }
-        }
-        need -= 1;
-      }
-        
-    } else {
-      break;
+void TodoList::TightenArray(int start) {
+  for (unsigned int i = start; i < size_; i++) {
+    if (list_[i + 1] != nullptr) {
+      list_[i] = list_[i + 1];
     }
-      
   }
 }
