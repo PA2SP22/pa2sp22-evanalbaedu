@@ -71,7 +71,6 @@ int* MakeDynoIntArray(unsigned int size) {
   return new (std::nothrow) int[size];
 }
 
-
 int Sum(int* the_array, unsigned int array_size) {
   if (the_array == nullptr) {
     throw "NULL ARRAY REFERENCE";
