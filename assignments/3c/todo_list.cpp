@@ -45,10 +45,7 @@ void TodoList::DeleteItem(unsigned int area) {
   doesn't exist it returns NULL. 
 */
 TodoItem* TodoList::GetItem(int spot) {
-  if ((size_ > 0) && (size_ <= cap_)) {
-    if (list_[spot-1] == nullptr) {
-      return nullptr;
-    }
+  if ((size_ > 0) && (size_ <= cap_) && (list_[spot-1] != nullptr)) {
     return list_[spot - 1];
   }
   return nullptr;
