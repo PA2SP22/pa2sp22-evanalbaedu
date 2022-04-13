@@ -19,11 +19,8 @@ void TodoUI::menu() {
   std::cout << "Welcome to the console-based Todo List.\n\nPlease type any " <<
   "integer number to start." << std::endl;
   reader.readInt();
-  std::cout << std::string( 100, '\n' );
-  //cout << "\033[2J\033[1;1H";
-  int choice;
+  int choice = 1;
   while (choice != 0) {
-    std::cout << std::string( 100, '\n' );
     std::cout <<
     "Please type a number to select one of the following options below:\n\n"
     << "0: Exit the program.\n" << "1: Create a new item.\n"
@@ -78,10 +75,14 @@ void TodoUI::DeleteItem() {
   interface_->DeleteItem(num);
 }
 
-void TodoUI::DeleteItems() {}
+void TodoUI::DeleteItems() {
+  std::cout << "Deleted all items on the Todo List." << std::endl;
+}
 
 void TodoUI::ViewItem() {
-  //std::cout << interface->
+  std::cout << "Please type the number corresponding to the location of the item you want to view: " << std::endl;
+  int location = reader.readInt();
+  std::cout << interface_->GetItem(location) << std::endl;
 }
 
 void TodoUI::ViewItems() {

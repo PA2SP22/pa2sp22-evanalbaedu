@@ -18,6 +18,8 @@ class TodoList {
       to NULL. 
     */
     TodoList() {
+      size_ = 0;
+      cap_ = 25;
       list_ = new TodoItem*[cap_];
       for (unsigned int i = 0; i < cap_; i++) {
         list_[i] = nullptr;
@@ -45,8 +47,8 @@ class TodoList {
 
  private:
     /* PRIVATE Data for Todo List Class */
-    unsigned int size_ = 0; /* Current size of your list. */
-    unsigned int cap_ = 25; /* Max capacity of your list. */
+    unsigned int size_; /* Current size of your list. */
+    unsigned int cap_; /* Max capacity of your list. */
     TodoItem** list_; /* Pointer to TodoItem*. */
     /* PRIVATE Prototypes for Todo List Class */
     void IncreaseCap();
