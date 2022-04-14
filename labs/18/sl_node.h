@@ -13,7 +13,6 @@ class SLNode {
     contents_ = load;
   }
 
-  ~SLNode() {}
   void set_contents(int content);
   int contents() const;
   void set_next_node(SLNode* next_node);

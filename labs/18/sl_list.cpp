@@ -1,20 +1,40 @@
 #include "sl_list.h"
 
 void SLList::InsertHead(int content) {
-  if (head_ == nullptr) {
-    head_ = new SLNode(content);
-  } else {
-    head_->set_next_node();
-  } 
+  SLNode* new_node = new SLNode(content);
   size_ += 1;
+  if (head_ == nullptr) {
+    head_ = new_node;
+    return;
+  }
+  SLNode* it = head_;
+  while (it->next_node() != nullptr) {
+    it = it->next_node();
+  }
+  it->set_next_node(new_node);
 }
 
 void SLList::RemoveHead() {
-
+  if (head_ == nullptr) {
+    return;
+  }
+  SLNode* it = head_;
+  head_ = head_->next_node();
+  delete it;
+  size_ -= 1; 
 } 
 
 void SLList::Clear() {
-
+  if (head_ == nullptr) {
+    return;
+  }
+  SLNode* it = head_;
+  while (it != nullptr) {
+    head_ = head_->next_node();
+    delete it;
+    it = head_;
+  }
+  size_ = 0;
 }
 
 unsigned int SLList::size() const {
@@ -22,13 +42,19 @@ unsigned int SLList::size() const {
 }
 
 std::string SLList::ToString() const {
-  //if (head_ != nullptr) {
-  //  std::stringstream s;
-  //  while (head_ != nullptr) {
-  //    s << head_->contents();
-  //  }
-  //  return s.str();
-  //}
-  return "";
+  if (head_ == nullptr) {
+    return "";  
+  }
+  std::stringstream s;
+  SLNode* it = head_;
+  while (it != nullptr) {
+    if ((it == nullptr) || (size_ == 1)) {
+      s << it->contents();
+    } else {
+      s << it->contents() << ", ";
+    }
+    it = it->next_node();
+  }
+  return s.str();
 }
 
