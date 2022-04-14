@@ -3,26 +3,17 @@
 void SLList::InsertHead(int content) {
   SLNode* new_node = new SLNode(content);
   size_ += 1;
-  if (head_ == nullptr) {
-    head_ = new_node;
-    return;
-  }
-  SLNode* it = head_;
-  while (it->next_node() != nullptr) {
-    it = it->next_node();
-  }
-  it->set_next_node(new_node);
+  new_node->set_next_node(head_);
+  head_ = new_node;
 }
 
 void SLList::RemoveHead() {
   if (head_ == nullptr) {
     return;
   }
-  SLNode* it = head_;
   head_ = head_->next_node();
-  delete it;
-  size_ -= 1; 
-} 
+  size_ -= 1;
+}
 
 void SLList::Clear() {
   if (head_ == nullptr) {
@@ -43,12 +34,12 @@ unsigned int SLList::size() const {
 
 std::string SLList::ToString() const {
   if (head_ == nullptr) {
-    return "";  
+    return "";
   }
   std::stringstream s;
   SLNode* it = head_;
   while (it != nullptr) {
-    if ((it == nullptr) || (size_ == 1)) {
+    if (it->next_node() == nullptr) {
       s << it->contents();
     } else {
       s << it->contents() << ", ";
