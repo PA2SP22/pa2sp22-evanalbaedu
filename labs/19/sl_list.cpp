@@ -9,9 +9,17 @@ void SLList::InsertHead(int content) {
 
 void SLList::InsertTail(int content) {
   SLNode* new_node = new SLNode(content);
+  if (size_ == 0) {
+    tail_ = new_node; 
+  } else {
+    SLNode* it = head_;  
+    while (it->next_node() != nullptr) {
+      it = it->next_node();
+    }
+    it->set_next_node(new_node);
+    tail_ = new_node;
+  } 
   size_ += 1;
-  new_node->set_next_node(tail_);
-  tail_ = new_node;
 }
 
 void SLList::RemoveHead() {
@@ -23,10 +31,20 @@ void SLList::RemoveHead() {
 }
 
 void SLList::RemoveTail() {
-  if (tail_ == nullptr) {
-    return;
+  if (head_ != nullptr) {
+    if (head_ != nullptr &&  head_ == tail_) {
+      RemoveHead();
+    } else {
+      SLNode* it = head_;
+      while (it->next_node() != tail_) {
+        it = it->next_node();
+      }
+      it->set_next_node(nullptr);
+      delete tail_;
+      tail_ = it;
+      size_ -= 1;
+    }
   }
-
 }
 
 int SLList::GetHead() const {
