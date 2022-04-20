@@ -5,21 +5,31 @@
 */
 
 #include "todo_ui.h"
- 
+
+/* Create a new Todo List */ 
 TodoUI::TodoUI() {
   interface_ = new TodoList;
 }
 
+/* Delete the dynamic TodoList and set the pointer to the List to NULL */
 TodoUI::~TodoUI() {
-  //delete[] interface_;
-  //interface_ = nullptr;
+  delete[] interface_;
+  interface_ = nullptr;
 }
 
+/* Display the menu ui to the user and give them the options of:
+1. Exiting the program
+2. Create a new item
+3. Edit an Item
+4, Delete all items
+5. View a specific item
+6. View all items
+*/
 void TodoUI::menu() {
   std::cout << "Welcome to the console-based Todo List.\n\nPlease type any " <<
   "integer number to start." << std::endl;
   reader.readInt();
-  int choice = 1;
+  int choice;
   while (choice != 0) {
     std::cout <<
     "Please type a number to select one of the following options below:\n\n"
@@ -55,37 +65,59 @@ void TodoUI::menu() {
 }
 
 /* PRIVATE */
+/* Create a new item by asking the user the description of the item todo, priority, and if the item on the list has been completed. */
 void TodoUI::NewItem() {
-  std::cout << "Please type a description for your item: " << std::endl;
+  std::cout << "Please type a description for your item:" << std::endl;
   std::string desc = reader.readString();
-  std::cout << "Please type the number from 1-5 (1 = Highest) for your item's priority: " << std::endl;
+  std::cout << "Please type the number from 1-5 (1 = Highest) for your item's priority:" << std::endl;
   int num = reader.readInt(1, 5);
   std::cout << "Has the item been completed? Please type the word true if the item is completed. If the item is not completed, please type the word false: " << std::endl;
   bool status = reader.readBool(); 
   interface_->AddItem(new TodoItem(desc, num, status));
 }
 
-// Ask Luke EditItem how to cause no function exists in TodoList and for other functions.
+/* Ask the user what they want to edit a specific item's of the following: Description, Priority, and if it was completed. After that edit the part of the item they want to edit out. */
+void TodoUI::EditItem() {
+  std::cout << "Please type the number corresponding to the location of the item you want to edit:" << std::endl;
+  int location = reader.readInt();
+  std::cout << "Please type the number corresponding on what part you want to edit of the item you have chosen. (1 = Description | 2 = Priority | 3 = Completion Status)\n\n" << std::endl;
+  int option = reader.readInt(1, 3);
+  if (option == 1) {
+    std::cout << "Please type new description you want to set:" << std::endl;
+    std::string edit_desc = reader.readString();
+    interface_->GetItem(location)->set_description(edit_desc);
+  } else if (option == 2) {
+    std::cout << "Please type a new number from 1 to 5 to set the new priority of the item:" << std::endl;
+    int edit_num = reader.readInt(1, 5);
+    interface_->GetItem(location)->set_priority(edit_num);
+  } else if (option == 3) {
+    std::cout << "Has the item been completed? Please type the word true if the item is completed. If the item is not completed, please type the word false:" << std::endl;
+    bool status = reader.readBool();
+    interface_->GetItem(location)->set_completed(status);
+  }
+}
 
-void TodoUI::EditItem() {}
-
+/* Allows user to delete a specific item in the Todo List */
 void TodoUI::DeleteItem() {
-  std::cout << "Please type the location of the item you want to remove from the Todo List: " << std::endl;
+  std::cout << "Please type the location of the item you want to remove from the Todo List:" << std::endl;
   int num = reader.readInt();
   interface_->DeleteItem(num);
 }
 
+/* Deletes all the items in the Todo List. */
 void TodoUI::DeleteItems() {
-  std::cout << "Deleted all items on the Todo List." << std::endl;
+  std::cout << "All items on the Todo List have been deleted.\n" << std::endl;
 }
 
+/* Prints out a specific item in the Todo List */
 void TodoUI::ViewItem() {
-  std::cout << "Please type the number corresponding to the location of the item you want to view: " << std::endl;
+  std::cout << "Please type the number corresponding to the location of the item you want to view:" << std::endl;
   int location = reader.readInt();
-  std::cout << interface_->GetItem(location) << std::endl;
+  std::cout << "\nDescription:\n"<< interface_->GetItem(location)->description() << "\nPriority:\n" << interface_->GetItem(location)->priority() << "\nIs it completed? (1 = True | 2 = False)\n" << interface_->GetItem(location)->completed() << "\n\n" << std::endl;
 }
 
+/* Prints out all the items in the Todo List */
 void TodoUI::ViewItems() {
-  std::cout << interface_->ToFile() << std::endl;
+  std::cout << *interface_ << std::endl;
 }
 
