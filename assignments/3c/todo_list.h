@@ -1,5 +1,5 @@
 /*
- * Name        : todo_item.cpp
+ * Name        : todo_list.h
  * Author      : Evan Alba
  * Description : Header File for class TodoList.
  */
@@ -13,32 +13,12 @@
 
 class TodoList {
  public:
-    /* 
-      Creates a dynamic array of 25 elements and initializes the elements 
-      to NULL. 
-    */
-    TodoList() {
-      size_ = 0;
-      cap_ = 25;
-      list_ = new TodoItem*[cap_];
-      for (unsigned int i = 0; i < cap_; i++) {
-        list_[i] = nullptr;
-      }
-    }
-    /* 
-      Frees the memory for all TodoItems 
-      Frees the memory for the dynamic TodoItem* array
-    */
-    ~TodoList() {
-      for (unsigned int i = 0; i < size_; i++) {
-        delete list_[i];
-      }
-      delete[] list_;
-    }
-     /* PUBLIC Setters Prototypes for Todo List Class */
+    /* PUBLIC Setters Prototypes for Todo List Class */
+    TodoList();
+    ~TodoList();
     void AddItem(TodoItem* add);
-    void DeleteItem(unsigned int area);
-    TodoItem* GetItem(int spot);
+    void DeleteItem(unsigned int location);
+    TodoItem* GetItem(int location);
     unsigned int GetSize() const;
     unsigned int GetCapacity() const;
     void Sort();

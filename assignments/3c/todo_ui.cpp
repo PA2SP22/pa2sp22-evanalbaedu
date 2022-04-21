@@ -10,7 +10,7 @@
 TodoUI::TodoUI() {
   interface_ = new TodoList;
 }
-
+// Ask Luke Segmentation Fault when Exit Program (Destructor??) and make style not working.
 /* Delete the dynamic TodoList and set the pointer to the List to NULL */
 TodoUI::~TodoUI() {
   delete[] interface_;
@@ -78,18 +78,22 @@ void TodoUI::NewItem() {
 
 /* Ask the user what they want to edit a specific item's of the following: Description, Priority, and if it was completed. After that edit the part of the item they want to edit out. */
 void TodoUI::EditItem() {
+  if (interface_->GetSize() == 0) {
+    std::cout << "No items on the Todo List to edit.\n" << std::endl;
+    return;
+  }
   std::cout << "Please type the number corresponding to the location of the item you want to edit:" << std::endl;
-  int location = reader.readInt();
+  int location = reader.readInt(1, interface_->GetSize());
   std::cout << "Please type the number corresponding on what part you want to edit of the item you have chosen. (1 = Description | 2 = Priority | 3 = Completion Status)\n\n" << std::endl;
   int option = reader.readInt(1, 3);
   if (option == 1) {
     std::cout << "Please type new description you want to set:" << std::endl;
-    std::string edit_desc = reader.readString();
-    interface_->GetItem(location)->set_description(edit_desc);
+    std::string desc = reader.readString();
+    interface_->GetItem(location)->set_description(desc);
   } else if (option == 2) {
     std::cout << "Please type a new number from 1 to 5 to set the new priority of the item:" << std::endl;
-    int edit_num = reader.readInt(1, 5);
-    interface_->GetItem(location)->set_priority(edit_num);
+    int num = reader.readInt(1, 5);
+    interface_->GetItem(location)->set_priority(num);
   } else if (option == 3) {
     std::cout << "Has the item been completed? Please type the word true if the item is completed. If the item is not completed, please type the word false:" << std::endl;
     bool status = reader.readBool();
@@ -99,14 +103,25 @@ void TodoUI::EditItem() {
 
 /* Allows user to delete a specific item in the Todo List */
 void TodoUI::DeleteItem() {
+  if (interface_->GetSize() == 0) {
+    std::cout << "No items on the Todo List to delete.\n" << std::endl;
+    return;
+  }
   std::cout << "Please type the location of the item you want to remove from the Todo List:" << std::endl;
-  int num = reader.readInt();
+  int num = reader.readInt(1, interface_->GetSize());
   interface_->DeleteItem(num);
 }
 
 /* Deletes all the items in the Todo List. */
 void TodoUI::DeleteItems() {
+  if (interface_->GetSize() == 0) {
+    std::cout << "No items on the Todo List to delete.\n" << std::endl;
+    return;
+  }
   std::cout << "All items on the Todo List have been deleted.\n" << std::endl;
+  while (interface_->GetItem(1) != nullptr) {
+    interface_->DeleteItem(1);
+  }
 }
 
 /* Prints out a specific item in the Todo List */
@@ -118,6 +133,10 @@ void TodoUI::ViewItem() {
 
 /* Prints out all the items in the Todo List */
 void TodoUI::ViewItems() {
+  if (interface_->GetSize() == 0) {
+    std::cout << "No items on the Todo List to view.\n" << std::endl;
+    return;
+  }
   std::cout << *interface_ << std::endl;
 }
 

@@ -5,6 +5,30 @@
  */
 #include "todo_list.h"
 
+/* 
+   Creates a dynamic array of 25 elements and initializes the elements 
+   to NULL. 
+*/
+TodoList::TodoList() {
+  size_ = 0;
+  cap_ = 25;
+  list_ = new TodoItem*[cap_];
+  for (unsigned int i = 0; i < cap_; i++) {
+    list_[i] = nullptr;
+  }
+}
+
+/* 
+  Frees the memory for all TodoItems 
+  Frees the memory for the dynamic TodoItem* array
+*/
+TodoList::~TodoList() {
+  for (unsigned int i = 0; i < size_; i++) {
+    delete list_[i];
+  }
+  delete[] list_;
+}
+
 /*
   Add an item to the list.
   If there is room in the array add the new 
@@ -27,12 +51,12 @@ void TodoList::AddItem(TodoItem* add) {
   need to pack your array (shift all items "down" so there are no 
   empty slots between items). 
 */
-void TodoList::DeleteItem(unsigned int area) {
-  if ((area > 0) && (area <= size_)) {
-    delete list_[area - 1];
-    list_[area - 1] = nullptr;
+void TodoList::DeleteItem(unsigned int location) {
+  if ((location > 0) && (location <= size_)) {
+    delete list_[location - 1];
+    list_[location - 1] = nullptr;
     size_ -= 1;
-    TightenArray(area - 1);
+    TightenArray(location - 1);
   }
 }
 
@@ -44,9 +68,9 @@ void TodoList::DeleteItem(unsigned int area) {
   will return a pointer to the TodoItem requested. If that location 
   doesn't exist it returns NULL. 
 */
-TodoItem* TodoList::GetItem(int spot) {
-  if ((size_ > 0) && (size_ <= cap_) && (list_[spot-1] != nullptr)) {
-    return list_[spot - 1];
+TodoItem* TodoList::GetItem(int location) {
+  if ((size_ > 0) && (size_ <= cap_) && (list_[location-1] != nullptr)) {
+    return list_[location - 1];
   }
   return nullptr;
 }
