@@ -3,7 +3,6 @@
 * Author      : Evan Alba
 * Description : Header File for class TodoUI.
 */
- 
 #ifndef TODO_UI
 #define TODO_UI
 #include "CinReader.h"
@@ -13,13 +12,12 @@
 #include <string>
 #include <unistd.h>
 #include <term.h>
- 
 class TodoUI {
  public:
-  TodoUI(); 
+  TodoUI();
   ~TodoUI();
   void menu();
-   
+
  private:
   CinReader reader;
   TodoList* interface_;
@@ -31,4 +29,4 @@ class TodoUI {
   void ViewItems();
 };
 #endif
- 
+

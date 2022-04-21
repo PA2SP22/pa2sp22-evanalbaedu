@@ -1,5 +1,51 @@
 #include "sl_list.h"
 
+void SLList::Insert(int content) {
+  if ((head_ == nullptr) || (content <= head_->contents())) {
+    InsertHead(content);
+  } else if (content >= tail_->contents()) {
+    InsertTail(content);
+  } else {
+    SLNode* it = head_;
+    SLNode* trailer = head_;
+    while (it->contents() < content) {
+      trailer = it;
+      it = it->next_node();
+    }
+    SLNode* new_node = new SLNode(content);
+    size_ += 1;
+    new_node->set_next_node(it);
+    trailer->set_next_node(new_node);
+  }
+}
+
+bool SLList::RemoveFirstOccurence(int content) {
+  if (head_ == nullptr) {
+    return false;
+  }
+  SLNode* it = head_;
+  SLNode* trailer = head_;
+  while (it != nullptr && content != it->contents()) {
+    trailer = it;
+    it = it->next_node();
+  }
+  if (it == nullptr) {
+    return false;
+  } else if (it == head_) {
+    RemoveHead();
+    return true;
+  } else if (it == tail_) {
+    RemoveTail();
+    return true;
+  } else {
+    trailer->set_next_node(it->next_node());
+    delete it;
+    size_ -= 1;
+    return true;
+  }
+}
+
+
 void SLList::InsertHead(int content) {
   SLNode* new_node = new SLNode(content);
   size_ += 1;
@@ -17,26 +63,27 @@ void SLList::InsertTail(int content) {
     SLNode* new_node = new SLNode(content);
     tail_->set_next_node(new_node);
     tail_ = new_node;
-    size_ += 1;
+    size_++;
   }
 }
 
 void SLList::RemoveHead() {
-  if (head_ == nullptr) {
-    return;
-  } else if (head_ == tail_) {
-    SLNode* temp = head_;
-    head_ = head_->next_node();
-    delete temp;
-    if (head_ == nullptr) {
-      tail_ = nullptr;
+  if (head_ != nullptr) {
+    if (head_ == tail_) {
+      SLNode* temp = head_;
+      head_ = head_->next_node();
+      delete temp;
+      if (head_ == nullptr) {
+        tail_ = nullptr;
+      }
+      size_--;
+    } else {
+      SLNode* temp = head_;
+      head_ = head_->next_node();
+      delete temp;
+      size_--;
     }
-  } else {
-    SLNode* temp = head_;
-    head_ = head_->next_node();
-    delete temp;
   }
-  size_ -= 1;
 }
 
 void SLList::RemoveTail() {
