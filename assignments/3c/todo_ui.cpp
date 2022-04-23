@@ -6,24 +6,14 @@
 
 #include "todo_ui.h"
 
-/* Create a new Todo List */
 TodoUI::TodoUI() {
   interface_ = new TodoList;
 }
 
-/* Delete the dynamic TodoList and set the pointer to the List to NULL */
 TodoUI::~TodoUI() {
   delete interface_;
 }
 
-/* Display the menu ui to the user and give them the options of:
-1. Exiting the program
-2. Create a new item
-3. Edit an Item
-4, Delete all items
-5. View a specific item
-6. View all items
-*/
 void TodoUI::menu() {
   std::cout << "Welcome to the console-based Todo List.\n\nPlease type any " <<
   "integer number to start." << std::endl;
@@ -64,9 +54,6 @@ void TodoUI::menu() {
 }
 
 /* PRIVATE */
-/* Create a new item by asking the user the
-description of the item todo, priority, and
-if the item on the list has been completed. */
 void TodoUI::NewItem() {
   std::cout << "Please type a description for your item:" << std::endl;
   std::string desc = reader.readString();
@@ -83,9 +70,6 @@ void TodoUI::NewItem() {
   interface_->AddItem(new TodoItem(desc, num, status));
 }
 
-/* Ask the user what they want to edit a specific item's of the following: 
-Description, Priority, and if it was completed. 
-After that edit the part of the item they want to edit out. */
 void TodoUI::EditItem() {
   if (interface_->GetSize() == 0) {
     std::cout << "No items on the Todo List to edit.\n" << std::endl;
@@ -118,7 +102,6 @@ void TodoUI::EditItem() {
   }
 }
 
-/* Allows user to delete a specific item in the Todo List */
 void TodoUI::DeleteItem() {
   if (interface_->GetSize() == 0) {
     std::cout << "No items on the Todo List to delete.\n" << std::endl;
@@ -130,7 +113,6 @@ void TodoUI::DeleteItem() {
   interface_->DeleteItem(num);
 }
 
-/* Deletes all the items in the Todo List. */
 void TodoUI::DeleteItems() {
   if (interface_->GetSize() == 0) {
     std::cout << "No items on the Todo List to delete.\n" << std::endl;
@@ -142,7 +124,6 @@ void TodoUI::DeleteItems() {
   }
 }
 
-/* Prints out a specific item in the Todo List */
 void TodoUI::ViewItem() {
   std::cout << "Please type the number corresponding to the location " <<
   "of the item you want to view:" << std::endl;
@@ -155,7 +136,6 @@ void TodoUI::ViewItem() {
   "\n\n" << std::endl;
 }
 
-/* Prints out all the items in the Todo List */
 void TodoUI::ViewItems() {
   if (interface_->GetSize() == 0) {
     std::cout << "No items on the Todo List to view.\n" << std::endl;
