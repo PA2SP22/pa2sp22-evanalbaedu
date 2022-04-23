@@ -1,0 +1,54 @@
+Declare and implement a class that provides the following interface EXACTLY.
+You will create 2 new files, bs_tree.h and bs_tree.cpp
+You will also need to use your bst_node.h and bst_node.cpp from the previous exercises.
+
+class name: BSTree
+
+private data members:
+
+	BSTNode* that points to the root node of a binary search tree
+	unsigned int that holds the number of nodes in the tree
+
+public function interface:
+
+	default constructor, sets the root to NULL and size to 0
+	
+	destructor, calls the Clear function
+	
+	bool Insert(int), calls private function Insert(int, root)
+	
+	void Clear(), call private function Clear(root)
+	
+	unsigned int GetSize() const
+	
+	string InOrder (), call private function InOrder(root)
+	
+private function interface:
+
+	bool Insert (int, BSTNode*&), Create a new BSTNode and insert it into the tree, returns 
+								  true; if integer is already in the tree, does not insert,
+								  returns false
+	
+	void Clear (BSTNode*&), Clear the entire contents of the tree, freeing all memory
+							associated with all nodes
+	
+	string InOrder (BSTNode*), Creates a string of the data in all nodes in the tree,
+							   in ascending order, separate by spaces (there should be a 
+							   space after the last output value)
+
+A Makefile has been included with this exercise. Your options are:
+make (Tries to compile your exercise)
+make style (Checks your file for some styling mistakes. Note this does not check
+            variable / function names / all indentation)
+make clean (Removes the executable)
+
+Please note you need to follow programming style guidelines for this exercise.
+
+Exercises having the following will lose 10% per category:
+- Code (such as output statements) not explicitly required
+- Bad Programming Style (Variable Names, Formatting)
+
+Exercises that DO NOT COMPILE will receive a ZERO!
+
+NOTE: Exercises that compile with warnings will be treated as if they did not
+      compile. (i.e. they will receive a zero)

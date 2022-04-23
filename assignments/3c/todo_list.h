@@ -71,14 +71,8 @@ class TodoList {
     */
     void Sort();
 
-    /*
-       Returns a string containing all TodoItems in the list.
-       Uses the TodoItems ToFile function to create. Each item should be
-       on its own line.
-    */
-    std::string ToFile();
 
-    /* Outputs a numbered list of all TodoItem present in the list. */
+    std::string ToFile();
     friend std::ostream& operator << (std::ostream &out, const TodoList &obj);
 
  private:
@@ -87,17 +81,7 @@ class TodoList {
     unsigned int cap_; /* Max capacity of your list. */
     TodoItem** list_; /* Pointer to TodoItem*. */
     /* PRIVATE Prototypes for Todo List Class */
-
-    /*
-      Increases the capacity of the array by 10. Should be called by
-      AddItem at the appropriate time.
-    */
     void IncreaseCap();
-
-    /* 
-       Compacts the array to get rid of an empty spot in the array. 
-       Should be called by DeleteItem at the appropriate time. 
-    */
     void TightenArray(int start);
 };
 #endif

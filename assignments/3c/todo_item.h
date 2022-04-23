@@ -45,7 +45,7 @@ class TodoItem {
 
     /* State if the item on the Todo List has been completed. */
     void set_completed(bool state);
-    
+
     /* Returns a string containing the description, 
     priority, and completed status, separated by the @ symbol. */
     std::string ToFile();

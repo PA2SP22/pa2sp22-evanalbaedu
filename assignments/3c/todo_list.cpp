@@ -63,6 +63,11 @@ void TodoList::Sort() {
   }
 }
 
+/*
+  Returns a string containing all TodoItems in the list.
+  Uses the TodoItems ToFile function to create. Each item should be
+  on its own line.
+*/
 std::string TodoList::ToFile() {
   if ((size_ > 0) && (size_ <= cap_)) {
     std::stringstream all;
@@ -74,6 +79,7 @@ std::string TodoList::ToFile() {
   return "";
 }
 
+/* Outputs a numbered list of all TodoItem present in the list. */
 std::ostream &operator << (std::ostream &out, const TodoList &obj) {
   for (unsigned int i = 0; i < obj.size_; i++) {
     out << obj.list_[i]->description() << obj.list_[i]->priority()
@@ -83,6 +89,10 @@ std::ostream &operator << (std::ostream &out, const TodoList &obj) {
 }
 
 /* PRIVATE */
+/*
+  Increases the capacity of the array by 10. Should be called by
+  AddItem at the appropriate time.
+*/
 void TodoList::IncreaseCap() {
   cap_ += 10;
   TodoItem** extend = new TodoItem*[cap_];
@@ -96,6 +106,10 @@ void TodoList::IncreaseCap() {
   list_ = extend;
 }
 
+/* 
+  Compacts the array to get rid of an empty spot in the array. 
+  Should be called by DeleteItem at the appropriate time. 
+*/
 void TodoList::TightenArray(int start) {
   for (unsigned int i = start; i < size_; i++) {
     if (list_[i + 1] != nullptr) {

@@ -36,7 +36,7 @@ todo_list: ${MAIN}.cpp todo_list.h todo_list.cpp todo_item.h todo_item.cpp
 
 # Type 'make style' to check your code style
 s style: ../../helpful_files/cpplint.py
-	python $< --filter=-runtime/references,-legal/copyright,-readability/streams,-runtime/explicit,-build/header_guard,-build/include ${H_FILES} ${CPP_FILES} driver.cpp
+	python2 $< --filter=-runtime/references,-legal/copyright,-readability/streams,-runtime/explicit,-build/header_guard,-build/include ${H_FILES} ${CPP_FILES} driver.cpp
 
 # Type 'make clean' to remove the executable
 c clean:

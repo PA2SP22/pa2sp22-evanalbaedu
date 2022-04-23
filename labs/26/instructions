@@ -1,0 +1,111 @@
+Declare and implement the classes described below.
+
+##############################################################################
+
+BASE class name: Item
+Filenames: item.h/item.cpp
+
+Private Data Members:
+  name_, string containing the name of the item
+  value_, unsigned int containing the value of the item
+	
+Public Constructors/Destructor:
+  Constructor with 2 parameters for private member variables.
+    -Default arguments for name_("item") and value_(0)
+  Virtual Destructor, does nothing
+	
+Accessors:
+  name
+  value
+
+Mutators:
+  set_name
+  set_value
+	
+Public Function:	
+  ToString, Returns string with name and value
+			  Format --  NAME, $VALUE
+	          EXAMPLE -- shoes, $25
+
+##############################################################################
+	
+DERIVED class name: FoodItem (base Item)
+Filenames: food_item.h/food_item.cpp
+
+Private Data Members:
+	calories_, unsigned int
+	unit_of_measure_, string (such as "ounces")
+	units_, double
+	
+Public Constructors/Destructor:
+  Constructor with 5 parameters for private member variables of this class and parent.
+    -Default arguments for name_("fooditem"), value_(0), calories_(0),
+	                       unit_of_measure_("nounits"), units_(0).
+	-Calls Item constructor in its initialization section with name and value
+	Virtual Destructor, does nothing
+
+Accessors:
+	calories
+	unit_of_measure
+	units
+	
+Mutators:
+	set_calories
+	set_unit_of_measure
+	set_units
+
+Public Function:	
+	ToString, Returns string with name, value, units and unit of measure, calories. 
+			  Units formatted to exactly two decimal places
+	          (uses Item::ToString in its implementation)
+			  Format -- NAME, $VALUE, UNITS UNITOFMEASURE, CALORIES calories
+			  EXAMPLE -- cookie, $1, 2.50 cookie(s), 250 calories
+
+##############################################################################
+
+DERIVED class name: MagicItem (base Item)
+Filenames: magic_item.h/magic_item.cpp
+
+Private Data Members:
+	description_, string
+	mana_required_, unsigned int
+	
+Public Constructors/Destructor:
+  Constructor with 4 parameters for private member variables of this class and parent.
+    -Default arguments for name_("magicitem"), value_(0)
+	                       description_("no description"), mana_required_(0).
+	-Calls Item constructor in its initialization section with name and value
+  Virtual Destructor, does nothing
+
+Accessors:  
+  description
+  mana_required
+
+Mutators:
+  set_description
+  set_mana_required
+	
+Public Function:
+	ToString, returns string with name, value, description, mana required
+	          (uses Item::ToString in its implementation)
+			  format -- NAME, $VALUE, DESCRIPTION, requires MANAREQUIRED mana
+			  EXAMPLE -- hat, $10, made of felt, requires 2 mana
+
+##############################################################################
+
+A Makefile has been included with this exercise. Your options are:
+make (Tries to compile your exercise)
+make style (Checks your file for some styling mistakes. Note this does not check
+            variable / function names / all indentation)
+make clean (Removes the executable)
+
+Please note you need to follow programming style guidelines for this exercise.
+
+Exercises having the following will lose 10% per category:
+- Code (such as output statements) not explicitly required
+- Bad Programming Style (Variable Names, Formatting)
+
+Exercises that DO NOT COMPILE will receive a ZERO!
+
+NOTE: Exercises that compile with warnings will be treated as if they did not
+      compile. (i.e. they will receive a zero)

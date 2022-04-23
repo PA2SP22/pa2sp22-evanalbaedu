@@ -1,0 +1,51 @@
+Declare and implement a class that provides the following interface EXACTLY.
+You will create 2 new files, bst_node.h and bst_node.cpp
+
+class name: BSTNode
+
+private data members:
+
+	BSTNode* to point to a left child
+	BSTNode* to point to a right child
+	int used to store the data contents of this BSTNode
+
+public function interface:
+
+	default constructor, sets left and right child to NULL and the contents to 0
+	overloaded constructor, int parameter assigned to the contents
+	
+	destructor, sets left and right child to NULL
+	
+	void SetContents(int)
+	
+	int GetContents() const
+	int& GetContents()
+	
+	void SetLeftChild(BSTNode*)
+	void SetRightChild(BSTNode*)
+	
+	BSTNode* GetLeftChild() const
+	BSTNode*& GetLeftChild()
+	
+	BSTNode* GetRightChild() const
+	BSTNode*& GetRightChild()
+	
+	Why two functions for each get?
+	http://markgodwin.blogspot.com/2009/08/c-reference-to-pointer.html
+
+A Makefile has been included with this exercise. Your options are:
+make (Tries to compile your exercise)
+make style (Checks your file for some styling mistakes. Note this does not check
+            variable / function names / all indentation)
+make clean (Removes the executable)
+
+Please note you need to follow programming style guidelines for this exercise.
+
+Exercises having the following will lose 10% per category:
+- Code (such as output statements) not explicitly required
+- Bad Programming Style (Variable Names, Formatting)
+
+Exercises that DO NOT COMPILE will receive a ZERO!
+
+NOTE: Exercises that compile with warnings will be treated as if they did not
+      compile. (i.e. they will receive a zero)
