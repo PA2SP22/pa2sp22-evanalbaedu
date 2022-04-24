@@ -11,7 +11,9 @@ void SLList::RemoveHead() {
   if (head_ == nullptr) {
     return;
   }
+  SLNode* temp = head_;
   head_ = head_->next_node();
+  delete temp;
   size_ -= 1;
 }
 
