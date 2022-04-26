@@ -22,9 +22,9 @@ void TodoUI::menu() {
   while (choice != 0) {
     std::cout <<
     "Please type a number to select one of the following options below:\n\n"
-    << "0: Exit the program.\n" << "1: Create a new item.\n"
-    << "2: Edit an item.\n" << "3: Delete an item.\n"
-    << "4: Delete all items.\n" << "5. View a specific item.\n"
+    << "0. Exit the program.\n" << "1. Create a new item.\n"
+    << "2. Edit an item.\n" << "3. Delete an item.\n"
+    << "4. Delete all items.\n" << "5. View a specific item.\n"
     << "6. View all items.\n" << std::endl;
     choice = reader.readInt();
     switch (choice) {
