@@ -1,7 +1,8 @@
 #ifndef DL_LIST
 #define DL_LIST
-//#include <iostream>
+#include <iostream>
 #include <string>
+#include <sstream>
 #include "dl_node.h"
 
 class DLList {
