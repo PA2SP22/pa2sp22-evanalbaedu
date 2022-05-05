@@ -170,12 +170,12 @@ string ArrayBackwardsAsString(int array[], unsigned int start, unsigned int size
   stringstream s;
   s << array[start] << " ";
   string contents = s.str();
-  if (start < 0) {
+  if (start > size) {
     return "";
-  } else if (start == size) {
+  } else if (start == 0) {
     return contents;
   }
-  return contents + ArrayBackwardsAsString(array, (start + 1), size);
+  return contents + ArrayBackwardsAsString(array, (start - 1), size);
 }
 
 // For testing (DO NOT ALTER)
