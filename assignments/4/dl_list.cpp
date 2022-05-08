@@ -86,14 +86,15 @@ void DLList::PopFront() {
 void DLList::PopBack() {
   if (head_ == nullptr) {
     std::cerr << "List Empty";
-    return;
+  } else if (size_ == 1) {
+    PopFront();
+  } else {
+    DLNode* last = tail_;
+    tail_  = tail_->GetPrevious();
+    delete last;
+    size_ -= 1;
+    tail_->SetNext(nullptr);
   }
-  DLNode* last = tail_;
-
-//  tail_ = tail_->GetPrevious();
-//  delete last;
-//  size_ -= 1;
-//  tail_->SetNext(nullptr);
 }
 
 void DLList::RemoveFirst(int num) {
@@ -114,7 +115,6 @@ void DLList::RemoveFirst(int num) {
     delete it;
     size_ -= 1;
   }
-  std::cerr << "Not Found";
 }
 
 void DLList::RemoveAll(int num) {

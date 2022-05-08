@@ -1,5 +1,6 @@
 #ifndef DL_NODE
 #define DL_NODE
+#include <cstddef>
 
 class DLNode {
  public:

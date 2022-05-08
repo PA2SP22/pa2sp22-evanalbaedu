@@ -167,14 +167,22 @@ string ArrayForwardsAsString(int array[], unsigned int start,
  *         if the startIndex is < zero
  */
 string ArrayBackwardsAsString(int array[], unsigned int start, unsigned int size) {
+  if (start >= size) {
+    return "";
+  }
+
   stringstream s;
   s << array[start] << " ";
   string contents = s.str();
-  if (start > size) {
-    return "";
-  } else if (start == 0) {
+  if (start == 0) {
     return contents;
   }
+
+//  if (start >= size) {
+//    return "";
+//  } else if (start == 0) {
+//    return contents;
+//  }
   return contents + ArrayBackwardsAsString(array, (start - 1), size);
 }
 
