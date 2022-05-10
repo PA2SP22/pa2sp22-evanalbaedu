@@ -62,7 +62,8 @@ string ArrayForwardsAsString(int array[], unsigned int start,
  * @return a string containing the contents of the array, separated by spaces, in reverse order; returns empty string
  *         if the startIndex is < zero
  */
-string ArrayBackwardsAsString(int array[], unsigned int start, unsigned int size);
+string ArrayBackwardsAsString(int array[], unsigned int start
+, unsigned int size);
 
 // For testing (DO NOT ALTER)
 #include <cctype>
@@ -90,11 +91,10 @@ int main() {
  * @return an unsigned integer containing the computed factorial of the value
  */
 unsigned int Factorial(unsigned int value) {
-  if (value == 0) {
-    return 1;
-  } else if (value > 0) {
+  if (value > 0) {
     return Factorial((value - 1)) * value;
   }
+  return 1;
 }
 
 /*
@@ -108,9 +108,8 @@ unsigned int Fibonacci(unsigned int fib_value) {
     return 0;
   } else if (fib_value == 1) {
     return 1;
-  } else if (fib_value > 1) {
-    return Fibonacci(fib_value - 1) + Fibonacci(fib_value - 2);
   }
+  return Fibonacci(fib_value - 1) + Fibonacci(fib_value - 2);
 }
 
 /*
@@ -142,8 +141,6 @@ bool WordIsPalindrome(string word) {
  */
 string ArrayForwardsAsString(int array[], unsigned int start,
                              unsigned int size) {
-                               // start == 0 
-                               // start > size 
   stringstream s;
   s << array[start] << " ";
   string contents = s.str();
@@ -166,23 +163,17 @@ string ArrayForwardsAsString(int array[], unsigned int start,
  * @return a string containing the contents of the array, separated by spaces, in reverse order; returns empty string
  *         if the startIndex is < zero
  */
-string ArrayBackwardsAsString(int array[], unsigned int start, unsigned int size) {
+string ArrayBackwardsAsString(int array[], unsigned int start
+, unsigned int size) {
   if (start >= size) {
     return "";
   }
-
   stringstream s;
   s << array[start] << " ";
   string contents = s.str();
   if (start == 0) {
     return contents;
   }
-
-//  if (start >= size) {
-//    return "";
-//  } else if (start == 0) {
-//    return contents;
-//  }
   return contents + ArrayBackwardsAsString(array, (start - 1), size);
 }
 
