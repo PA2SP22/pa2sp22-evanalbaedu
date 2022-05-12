@@ -26,7 +26,7 @@ void DLList::PushFront(int num) {
   } else {
     DLNode* old_head = head_;
     old_head->SetPrevious(new_node);
-    new_node->SetPrevious(nullptr); 
+    new_node->SetPrevious(nullptr);
     new_node->SetNext(old_head);
     head_ = new_node;
   }
@@ -49,9 +49,9 @@ void DLList::PushBack(int num) {
     old_tail->SetNext(new_node);
     new_node->SetPrevious(old_tail);
     new_node->SetNext(nullptr);
-    tail_ = new_node; 
+    tail_ = new_node;
   }
- }
+}
 
 int DLList::GetFront() const {
   if (head_ == nullptr) {
@@ -112,15 +112,24 @@ void DLList::RemoveFirst(int num) {
     PopBack();
   } else {
     trailer->SetNext(it->GetNext());
+    it->GetNext()->SetPrevious(trailer);
     delete it;
     size_ -= 1;
   }
 }
 
 void DLList::RemoveAll(int num) {
-// Look through list
-// loop # of times using RemoveFirst()
-  std::cerr << "Not Found";
+  int original = size_;
+  DLNode* it = head_;
+  while (it != nullptr) {
+    if (it->GetContents() == num) {
+      RemoveFirst(num);
+    }
+    it = it->GetNext();
+  }
+  if (size_ == original) {
+    std::cerr << "Not Found";
+  }
 }
 
 bool DLList::Exists(int num) {
@@ -129,7 +138,7 @@ bool DLList::Exists(int num) {
     if (it->GetContents() == num) {
       return true;
     }
-    it = it->GetNext(); 
+    it = it->GetNext();
   }
   return false;
 }
@@ -150,7 +159,7 @@ void DLList::Clear() {
 
 std::string DLList::ToStringForwards() {
   if (size_ == 0) {
-    std::cerr << "List Empty"; 
+    std::cerr << "List Empty";
     return "";
   }
   std::stringstream s;
@@ -163,13 +172,12 @@ std::string DLList::ToStringForwards() {
     }
     first = first->GetNext();
   }
-  std::cout << s.str() << std::endl;
   return s.str();
 }
 
 std::string DLList::ToStringBackwards() {
   if (size_ == 0) {
-    std::cerr << "List Empty"; 
+    std::cerr << "List Empty";
     return "";
   }
   std::stringstream s;
@@ -182,7 +190,6 @@ std::string DLList::ToStringBackwards() {
     }
     back = back->GetPrevious();
   }
-  std::cout << s.str() << std::endl;
   return s.str();
 }
 

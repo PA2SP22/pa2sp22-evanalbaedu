@@ -6,7 +6,7 @@ DLNode::DLNode() {
   next_ = nullptr;
 }
 
-DLNode::~DLNode(){}
+DLNode::~DLNode() {}
 
 void DLNode::SetContents(int contents) {
   contents_ = contents;

@@ -7,13 +7,13 @@
 
 class DLList {
  public:
-  // Initializes head and tail to NULL, size to 0. 
+  // Initializes head and tail to NULL, size to 0.
   DLList();
 
-  // Calls the Clear() Function 
+  // Calls the Clear() Function
   ~DLList();
 
-  // Returns the size of the list 
+  // Returns the size of the list
   int GetSize() const;
 
   /* Has one parameter, an integer to add to the 
@@ -75,6 +75,7 @@ class DLList {
   ending at the first node. If the list is empty return the empty string 
   and output "List Empty" to standard error output. */
   std::string ToStringBackwards();
+
  private:
   int size_;
   DLNode* head_;

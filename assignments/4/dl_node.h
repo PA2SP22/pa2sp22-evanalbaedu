@@ -14,8 +14,7 @@ class DLNode {
   DLNode* GetPrevious() const;
  private:
   int contents_;
-  DLNode* prev_; 
+  DLNode* prev_;
   DLNode* next_;
 };
 #endif
-
