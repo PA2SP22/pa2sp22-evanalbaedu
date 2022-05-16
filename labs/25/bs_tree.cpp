@@ -1,4 +1,5 @@
 #include "bs_tree.h"
+#include <iostream>
 
 BSTree::BSTree() {
   root_ = nullptr;
@@ -18,7 +19,7 @@ bool BSTree::Remove(int data) {
 }
 
 int BSTree::FindMin() {
-  FindMin(root_);
+  return FindMin(root_);
 }
 
 void BSTree::Clear() {
@@ -52,30 +53,37 @@ bool BSTree::Insert(int data, BSTNode*& subroot) {
 bool BSTree::Remove(int data, BSTNode*& subroot) {
   if (subroot == nullptr) {
     return false;
-  } else if (subroot->GetContents() == data) {
-    // No Children
-    if (subroot->GetLeftChild() == nullptr && subroot->GetRightChild() == nullptr) {
-      delete subroot;
-      subroot == nullptr;
-    // 1 Child
-    } else if (subroot->GetLeftChild() != nullptr || subroot->GetRightChild() != nullptr) {
-      BSTNode* temp = subroot;
-      if (subroot->GetLeftChild() != nullptr) {
-        root_ = subroot->GetLeftChild();
-      } else {
-        root_ = subroot->GetRightChild();
-      }
-      delete temp;
-    // 2 Children
-    } else if (subroot->GetLeftChild() != nullptr && subroot->GetRightChild() != nullptr) {
-      // Test
-    }
-    return true;
-  } else if (data > subroot->GetContents()) {
-    return Remove(data, subroot->GetRightChild());
   } else if (data < subroot->GetContents()) {
     return Remove(data, subroot->GetLeftChild());
+  } else if (data > subroot->GetContents()) {
+    return Remove(data, subroot->GetRightChild());
   }
+  // No Children
+  if ( (subroot->GetLeftChild() == nullptr) &&
+  (subroot->GetRightChild() == nullptr) ) {
+    delete subroot;
+    subroot = nullptr;
+  // 2 Children
+  } else if ( (subroot->GetLeftChild() != nullptr) &&
+  (subroot->GetRightChild() != nullptr) ) {
+    BSTNode* temp = subroot;
+    temp->SetContents(FindMin(subroot->GetRightChild()));
+    subroot->GetContents() = temp->GetContents();
+    subroot->GetRightChild();
+    return Remove(temp->GetContents(), subroot->GetRightChild());
+  // 1 Child
+  } else if ( (subroot->GetLeftChild() != nullptr) ||
+  (subroot->GetRightChild() != nullptr) ) {
+    BSTNode* temp = subroot;
+    if (subroot->GetLeftChild() != nullptr) {
+      subroot = subroot->GetLeftChild();
+    } else {
+      subroot = subroot->GetRightChild();
+    }
+    delete temp;
+  }
+  size_ -= 1;
+  return true;
 }
 
 int BSTree::FindMin(BSTNode* subroot) const {
