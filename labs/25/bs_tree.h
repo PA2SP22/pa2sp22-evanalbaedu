@@ -8,6 +8,8 @@ class BSTree {
   BSTree();
   ~BSTree();
   bool Insert(int data);
+  bool Remove(int data);
+  int FindMin();
   void Clear();
   unsigned int GetSize() const;
   std::string InOrder();
@@ -15,6 +17,8 @@ class BSTree {
   BSTNode* root_;
   unsigned int size_;
   bool Insert(int data, BSTNode*& subroot);
+  bool Remove(int data, BSTNode*& subroot);
+  int FindMin(BSTNode* subroot) const;
   void Clear(BSTNode*& subroot);
   std::string InOrder(BSTNode* subroot);
 };

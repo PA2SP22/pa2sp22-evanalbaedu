@@ -6,15 +6,15 @@ BSTree::BSTree() {
 }
 
 BSTree::~BSTree() {
-   Clear();
+  Clear();
 }
 
 bool BSTree::Insert(int data) {
-  Insert(data, root_);
+  return Insert(data, root_);
 }
 
 void BSTree::Clear() {
-
+  Clear(root_);
 }
 
 unsigned int BSTree::GetSize() const {
@@ -22,8 +22,7 @@ unsigned int BSTree::GetSize() const {
 }
 
 std::string BSTree::InOrder() {
-  return "test";
-
+  return InOrder(root_);
 }
 
 /* PRIVATE */
@@ -34,28 +33,32 @@ bool BSTree::Insert(int data, BSTNode*& subroot) {
     size_ += 1;
     return true;
   } else if (data < subroot->GetContents()) {
-    subroot = subroot->GetLeftChild();
-    return Insert(data, subroot); 
+    return Insert(data, subroot->GetLeftChild());
   } else if (data > subroot->GetContents()) {
-    subroot  = subroot->GetRightChild();
-    return Insert(data, subroot);
+    return Insert(data, subroot->GetRightChild());
   } else {
     return false;
   }
 }
 
 void BSTree::Clear(BSTNode*& subroot) {
-
+  if (subroot == nullptr) {
+    return;
+  }
+  Clear(subroot->GetLeftChild());
+  Clear(subroot->GetRightChild());
+  delete subroot;
+  size_ -= 1;
+  subroot = nullptr;
 }
 
 std::string BSTree::InOrder(BSTNode* subroot) {
-
-  std::stringstream s;
-  if (subroot != nullptr) {
-    s << InOrder(subroot->GetLeftChild());
-    s << subroot->GetContents() << " ";
-    s << InOrder(subroot->GetRightChild());
+  if (subroot == nullptr) {
+    return "";
   }
+  std::stringstream s;
+  s << InOrder(subroot->GetLeftChild());
+  s << subroot->GetContents() << " ";
+  s << InOrder(subroot->GetRightChild());
   return s.str();
 }
- 
