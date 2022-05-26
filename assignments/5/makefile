@@ -1,10 +1,10 @@
-# Makefile for Assignment 4
+# Makefile for Assignment 5
 CXX = g++
-ASSIGNMENT = 4
+ASSIGNMENT = 5
 ASSIGNMENT_NAME = assignment_${ASSIGNMENT}
 MAIN = ${ASSIGNMENT_NAME}_unit_test
-CPP_FILES = dl_list.cpp dl_node.cpp
-H_FILES = dl_list.h dl_node.h
+CPP_FILES =
+H_FILES = bst_nodet.h bs_treet.h
 CXXFLAGS = -Wall -Wextra -pedantic -g
 
 # Type 'make' to create the executable

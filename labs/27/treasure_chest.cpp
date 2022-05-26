@@ -17,8 +17,11 @@ void TreasureChest::AddItem(const Item& item_to_add) {
 *                            to take place.
 */
 void TreasureChest::InsertItem(const Item& item_to_add, unsigned int position) {
-  chest_.begin();
-  chest_.insert(position, item_to_add);
+  if (position > chest_.size()) {
+    chest_.push_back(item_to_add);
+  } else {
+    chest_.insert(chest_.begin() + position, item_to_add);
+  }
 }
 
 /*
@@ -27,7 +30,11 @@ void TreasureChest::InsertItem(const Item& item_to_add, unsigned int position) {
  * @return const Item* - A pointer to the item if position is valid, else NULL
  */
 const Item* TreasureChest::GetItem(unsigned int position) {
-  return nullptr;
+  if (position >= chest_.size()) {
+    return nullptr;
+  }
+  // Item* ptr = chest_.at(position);
+  // return ptr;
 }
 
 /*
@@ -36,7 +43,15 @@ const Item* TreasureChest::GetItem(unsigned int position) {
  * @return Item          - A copy of the Item removed from the chest
  * @throw string("ERROR: Remove at invalid position") if position is not valid
  */
-Item TreasureChest::RemoveItem(unsigned int position) {}
+Item TreasureChest::RemoveItem(unsigned int position) {
+  if (position >= chest_.size()) {
+    throw string("ERROR: Remove at invalid position");
+  }
+  std::vector<Item> copy(chest_);
+  Item removed = chest_.at(position);
+  chest_.erase(chest_.begin() + (position));
+  return removed;
+}
 
 /*
  * Clear the chest of all items.
@@ -68,7 +83,9 @@ unsigned int TreasureChest::GetSize() const {
 * Sort the items in the chest by name, using the sort function
 * from the C++ standard algorithm library.
 */
-void TreasureChest::SortByName() {}
+void TreasureChest::SortByName() {
+  std::sort(chest_.begin(), chest_.end(), CompareItemsByName();
+}
 
 /*
 * Sort the items in the chest by value, using the sort function
@@ -87,7 +104,20 @@ void TreasureChest::SortByQuantity() {}
 * formatted as ITEM_NAME, ITEM_NAME, ..., ITEM_NAME
 * Places "Chest Empty!" on the stream if the chest is empty
 */
-ostream& operator<<(ostream& outs, const TreasureChest& src) {}
+ostream& operator<<(ostream& outs, const TreasureChest& src) {
+  if (src.GetSize() > 0) {
+    for (unsigned int i = 0; i < src.GetSize(); i++) {
+      if (i == (src.GetSize() - 1)) {
+        outs << src.chest_.at(i).name_;
+      } else {
+        outs << src.chest_.at(i).name_ << ", ";
+      }
+    }
+  } else {
+    outs << "Chest Empty!";
+  }
+  return outs;
+}
 
 /*
 * Returns a string representation of what the overloaded << operator would
@@ -96,7 +126,9 @@ ostream& operator<<(ostream& outs, const TreasureChest& src) {}
 * @return string - A string in the format ITEM_NAME, ... or "Chest Empty!"
 */
 string TreasureChest::ToString() {
-  return "test";
+  stringstream ss;
+  ss << *this;
+  return ss.str();
 }
 
 /* PRIVATE */
@@ -105,6 +137,9 @@ string TreasureChest::ToString() {
 * @return true if lsrc.name_ < rsrc.name_, else false
 */
 bool CompareItemsByName(const Item& lsrc, const Item& rsrc) {
+  if (lsrc.name_ < rsrc.name_) {
+    return true;
+  }
   return false;
 }
 
@@ -113,6 +148,9 @@ bool CompareItemsByName(const Item& lsrc, const Item& rsrc) {
 * @return true if lsrc.value_ < rsrc.value_, else false
 */
 bool CompareItemsByValue(const Item& lsrc, const Item& rsrc) {
+  if (lsrc.value_ < rsrc.value_) {
+    return true;
+  }
   return false;
 }
 
@@ -121,5 +159,8 @@ bool CompareItemsByValue(const Item& lsrc, const Item& rsrc) {
 * @return true if lsrc.quantity_ < rsrc.quantity_, else false
 */
 bool CompareItemsByQuantity(const Item& lsrc, const Item& rsrc) {
+  if (lsrc.quantity_ < rsrc.quantity_) {
+    return true;
+  }
   return false;
 }

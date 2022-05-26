@@ -1,6 +1,6 @@
 /*
  * Name        : lab_14.cpp
- * Author      : FILL IN
+ * Author      : Evan Alba
  * Description : Working with Bubble and Selection Sort
  */
 #include <iostream>

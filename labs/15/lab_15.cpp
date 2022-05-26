@@ -90,22 +90,23 @@ int InsertionSort(int the_array[], unsigned int size) {
 //    a[j] = temp
 //  gap = gap / 2
 int ShellSort(int the_array[], unsigned int size) {
-  int pass = 0;
-  int gap = size / 2;
+  int passes = 0;
+  unsigned int gap = (size / 2);
   while (gap > 0) {
-    pass += 1;
     for (unsigned int i = gap; i <= (size - 1); i++) {
       int temp = the_array[i];
-      int j = i;
-      while ((j >= gap) && (the_array[j - gap]) > temp) {
+      unsigned int j = i;
+      while (j >= gap && the_array[j - gap] > temp) {
         the_array[j] = the_array[j - gap];
         j -= gap;
       }
-      the_array[j] = temp;
+    the_array[j] = temp;
+    DisplayArray(the_array);
     }
     gap /= 2;
+    passes += 1;
   }
-  return pass;
+  return passes;
 }
 
 void SwapValues(int &value_1, int &value_2) {
