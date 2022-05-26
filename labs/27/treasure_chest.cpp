@@ -33,8 +33,8 @@ const Item* TreasureChest::GetItem(unsigned int position) {
   if (position >= chest_.size()) {
     return nullptr;
   }
-  // Item* ptr = chest_.at(position);
-  // return ptr;
+  Item* ptr = &chest_.at(position);
+  return ptr;
 }
 
 /*
@@ -84,20 +84,24 @@ unsigned int TreasureChest::GetSize() const {
 * from the C++ standard algorithm library.
 */
 void TreasureChest::SortByName() {
-  std::sort(chest_.begin(), chest_.end(), CompareItemsByName();
+  std::sort(chest_.begin(), chest_.end(), CompareItemsByName);
 }
 
 /*
 * Sort the items in the chest by value, using the sort function
 * from the C++ standard algorithm library.
 */
-void TreasureChest::SortByValue() {}
+void TreasureChest::SortByValue() {
+  std::sort(chest_.begin(), chest_.end(), CompareItemsByValue);
+}
 
 /*
 * Sort the items in the chest by quantity, using the sort function
 * from the C++ standard algorithm library.
 */
-void TreasureChest::SortByQuantity() {}
+void TreasureChest::SortByQuantity() {
+  std::sort(chest_.begin(), chest_.end(), CompareItemsByQuantity);
+}
 
 /*
 * Place the names of the items in the chest on the specified stream,
